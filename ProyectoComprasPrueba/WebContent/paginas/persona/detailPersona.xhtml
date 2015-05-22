@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDetailPersona" >
+    <p:dialog id="carDialogDetailPersona" header="Detalle Persona" widgetVar="carDialogDetailPersona" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgDetallePersona" cellpadding="0" cellspacing="2" width="100%" />
+      <p:panel header="Datos de Persona" >
+        <h:panelGrid cellspacing="4" columns="2" >
+          <p:outputLabel value="Patpersona :" for="txtPatpersona" />
+          <p:outputLabel id="txtPatpersona" value="#{personaBean.persona.vc_patpersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Matpersona :" for="txtMatpersona" />
+          <p:outputLabel id="txtMatpersona" value="#{personaBean.persona.vc_matpersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Nompersona :" for="txtNompersona" />
+          <p:outputLabel id="txtNompersona" value="#{personaBean.persona.vc_nompersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Telpersona :" for="txtTelpersona" />
+          <p:outputLabel id="txtTelpersona" value="#{personaBean.persona.vc_telpersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Correopersona :" for="txtCorreopersona" />
+          <p:outputLabel id="txtCorreopersona" value="#{personaBean.persona.vc_correopersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuario :" for="txtUsuario" />
+          <p:outputLabel id="txtUsuario" value="#{personaBean.persona.vc_usuario}" style="font-weight:bold;" />
+          <p:outputLabel value="Contrasena :" for="txtContrasena" />
+          <p:outputLabel id="txtContrasena" value="#{personaBean.persona.vc_contrasena}" style="font-weight:bold;" />
+          <p:outputLabel value="Areapersona :" for="txtAreapersona" />
+          <p:outputLabel id="txtAreapersona" value="#{personaBean.persona.in_areapersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Areapersona :" for="txtAreapersona" />
+          <p:outputLabel id="txtAreapersona" value="#{personaBean.persona.vc_areapersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Cargopersona :" for="txtCargopersona" />
+          <p:outputLabel id="txtCargopersona" value="#{personaBean.persona.in_cargopersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Cargopersona :" for="txtCargopersona" />
+          <p:outputLabel id="txtCargopersona" value="#{personaBean.persona.vc_cargopersona}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+          <p:outputLabel id="txtUsuingresa" value="#{personaBean.persona.vc_usuingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+          <p:outputLabel id="txtFecingresa" value="#{personaBean.persona.dt_fecingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+          <p:outputLabel id="txtUsumodifica" value="#{personaBean.persona.vc_usumodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+          <p:outputLabel id="txtFecmodifica" value="#{personaBean.persona.dt_fecmodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Diferent :" for="txtDiferent" />
+          <p:outputLabel id="txtDiferent" value="#{personaBean.persona.bt_diferent}" style="font-weight:bold;" />
+        </h:panelGrid>
+      </p:panel>
+      <br />
+      <center >
+        <p:commandButton title="Cerrar Ventana" value="Cerrar" icon="close-windows" oncomplete="confirmClosePersona.show()" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Imprimir Detalle" value="Imprimir" icon="icon-print" onclick="window.print();" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmClosePersona" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmClosePersona" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmClosePersona" oncomplete="confirmClosePersona.hide(),carDialogDetailPersona.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmClosePersona" oncomplete="confirmClosePersona.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<f:view contentType="text/html" locale="es_PE">	
+<h:head>
+	<title>Representaciones Tecnimotors</title>
+	<link rel="Shortcut Icon" href="resources/img/galeria/tecnimotors.jpg" />
+
+	<h:outputStylesheet library="css" name="normalize.css" />
+
+	<link rel="stylesheet" href="resources/css/icon.css" />
+	<h:outputStylesheet library="css" name="style.css"/>  
+    <h:outputStylesheet library="css" name="basic-jquery-slider.css"/>  
+  	
+<!--   <h:outputStylesheet library="css" name="estilos_impresion.css" media="print"/> -->
+
+	<ui:insert name="head"></ui:insert> 	
+  	  	
+	<script type="text/javascript">
+		window.onload = function() {
+			if (typeof history.pushState === "function") {
+				history.pushState("jibberish", null, null);
+				window.onpopstate = function() {
+					history.pushState('newjibberish', null, null);
+				};
+			} else {
+				var ignoreHashChange = true;
+				window.onhashchange = function() {
+					if (!ignoreHashChange) {
+						ignoreHashChange = true;
+						window.location.hash = Math.random();
+					} else {
+						ignoreHashChange = false;
+					}
+				};
+			}
+		}
+	</script>
+       
+</h:head>
+<h:body>
+<!-- <h:outputStylesheet name="login.css" library="css" /> -->
+<!-- <ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/> -->
+ 	 
+	<div id="page">
+		<div id="cabecera" class="oculto">
+			<ui:insert name="header">
+				<ui:include src="/secciones/cabecera.xhtml" />
+			</ui:insert>
+		</div>
+
+		<div id="menu" style="background-color: silver;" class="oculto">
+			<ui:insert name="menu">
+				<ui:include src="/secciones/menu.xhtml" />
+			</ui:insert>
+		</div>
+
+		<div id="contenido">
+			<p:spacer width="10" height="10"/>		
+			<ui:insert name="body">
+
+			</ui:insert>
+		</div>
+
+		<div id="pie" class="oculto">
+			<ui:insert name="footer">
+				<ui:include src="/secciones/pie.xhtml" />
+			</ui:insert>
+		</div>
+
+	</div>
+</h:body>
+</f:view>
+</html>

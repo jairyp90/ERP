@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formNewProveedor" >
+    <p:dialog id="carDialogNewProveedor" header="Nuevo(a) Proveedor" widgetVar="carDialogNewProveedor" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Proveedor" >
+          <h:panelGrid cellspacing="4" columns="2" id="pgNuevoProveedor" >
+            <p:outputLabel value="Nomproveedor :" for="txtNomproveedor" />
+            <p:inputText id="txtNomproveedor" value="#{proveedorBean.proveedor.vc_nomproveedor}" required="true" requiredMessage="Ingrese nomproveedor" />
+            <p:outputLabel value="Rucproveedor :" for="txtRucproveedor" />
+            <p:inputText id="txtRucproveedor" value="#{proveedorBean.proveedor.vc_rucproveedor}" required="true" requiredMessage="Ingrese rucproveedor" />
+            <p:outputLabel value="Dirproveedor :" for="txtDirproveedor" />
+            <p:inputText id="txtDirproveedor" value="#{proveedorBean.proveedor.vc_dirproveedor}" required="true" requiredMessage="Ingrese dirproveedor" />
+            <p:outputLabel value="Tel1proveedor :" for="txtTel1proveedor" />
+            <p:inputText id="txtTel1proveedor" value="#{proveedorBean.proveedor.vc_tel1proveedor}" required="true" requiredMessage="Ingrese tel1proveedor" />
+            <p:outputLabel value="Tel2proveedor :" for="txtTel2proveedor" />
+            <p:inputText id="txtTel2proveedor" value="#{proveedorBean.proveedor.vc_tel2proveedor}" required="true" requiredMessage="Ingrese tel2proveedor" />
+            <p:outputLabel value="Corrproveedor :" for="txtCorrproveedor" />
+            <p:inputText id="txtCorrproveedor" value="#{proveedorBean.proveedor.vc_corrproveedor}" required="true" requiredMessage="Ingrese corrproveedor" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{proveedorBean.proveedor.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{proveedorBean.proveedor.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{proveedorBean.proveedor.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{proveedorBean.proveedor.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Proveedor" value="Guardar" icon="icon-save" update=":formListProveedor:msgProveedor" oncomplete="if(!args.validationFailed)confirmInsertProveedor.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseProveedorAdd.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmInsertProveedor" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmInsertProveedor" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Hacer el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmInsertProveedor,:formListProveedor:tablaListadoProveedor" oncomplete="confirmInsertProveedor.hide(),carDialogNewProveedor.hide()" actionListener="#{proveedorBean.guardarRegistroProveedor}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmInsertProveedor" oncomplete="confirmInsertProveedor.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseProveedorAdd" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseProveedorAdd" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseProveedorAdd" oncomplete="confirmCloseProveedorAdd.hide(),carDialogNewProveedor.hide()" >
+        <p:resetInput target="pgNuevoProveedor" />
+      </p:commandButton>
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseProveedorAdd" oncomplete="confirmCloseProveedorAdd.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

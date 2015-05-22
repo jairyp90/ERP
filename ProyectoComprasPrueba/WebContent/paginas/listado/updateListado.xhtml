@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formUpdateListado" >
+    <p:dialog id="carDialogUpdateListado" header="Actualizar Listado" widgetVar="carDialogUpdateListado" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgActualizaListado" cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Listado" >
+          <h:panelGrid cellspacing="4" columns="2" >
+            <p:outputLabel value="Idlistado :" for="txtIdlistado" />
+            <p:inputText id="txtIdlistado" value="#{listadoBean.listado.in_idlistado}" required="true" requiredMessage="Ingrese idlistado" />
+            <p:outputLabel value="Codlistado :" for="txtCodlistado" />
+            <p:inputText id="txtCodlistado" value="#{listadoBean.listado.vc_codlistado}" required="true" requiredMessage="Ingrese codlistado" />
+            <p:outputLabel value="Deslistado :" for="txtDeslistado" />
+            <p:inputText id="txtDeslistado" value="#{listadoBean.listado.vc_deslistado}" required="true" requiredMessage="Ingrese deslistado" />
+            <p:outputLabel value="Ref1listado :" for="txtRef1listado" />
+            <p:inputText id="txtRef1listado" value="#{listadoBean.listado.vc_ref1listado}" required="true" requiredMessage="Ingrese ref1listado" />
+            <p:outputLabel value="Ref2listado :" for="txtRef2listado" />
+            <p:inputText id="txtRef2listado" value="#{listadoBean.listado.vc_ref2listado}" required="true" requiredMessage="Ingrese ref2listado" />
+            <p:outputLabel value="Ref3listado :" for="txtRef3listado" />
+            <p:inputText id="txtRef3listado" value="#{listadoBean.listado.vc_ref3listado}" required="true" requiredMessage="Ingrese ref3listado" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{listadoBean.listado.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{listadoBean.listado.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{listadoBean.listado.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{listadoBean.listado.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Listado" value="Guardar" icon="icon-save" update=":formListListado:msgListado" oncomplete="if(!args.validationFailed)confirmUpdateListado.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseListadoUpdate.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmUpdateListado" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmUpdateListado" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Actualizar el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmUpdateListado,:formListListado:tablaListadoListado" oncomplete="confirmUpdateListado.hide(),carDialogUpdateListado.hide()" actionListener="#{listadoBean.actualizarRegistroListado}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmUpdateListado" oncomplete="confirmUpdateListado.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseListadoUpdate" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseListadoUpdate" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseListadoUpdate" oncomplete="confirmCloseListadoUpdate.hide(),carDialogUpdateListado.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseListadoUpdate" oncomplete="confirmCloseListadoUpdate.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

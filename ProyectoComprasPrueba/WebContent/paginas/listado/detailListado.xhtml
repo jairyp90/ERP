@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDetailListado" >
+    <p:dialog id="carDialogDetailListado" header="Detalle Listado" widgetVar="carDialogDetailListado" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgDetalleListado" cellpadding="0" cellspacing="2" width="100%" />
+      <p:panel header="Datos de Listado" >
+        <h:panelGrid cellspacing="4" columns="2" >
+          <p:outputLabel value="Idlistado :" for="txtIdlistado" />
+          <p:outputLabel id="txtIdlistado" value="#{listadoBean.listado.in_idlistado}" style="font-weight:bold;" />
+          <p:outputLabel value="Codlistado :" for="txtCodlistado" />
+          <p:outputLabel id="txtCodlistado" value="#{listadoBean.listado.vc_codlistado}" style="font-weight:bold;" />
+          <p:outputLabel value="Deslistado :" for="txtDeslistado" />
+          <p:outputLabel id="txtDeslistado" value="#{listadoBean.listado.vc_deslistado}" style="font-weight:bold;" />
+          <p:outputLabel value="Ref1listado :" for="txtRef1listado" />
+          <p:outputLabel id="txtRef1listado" value="#{listadoBean.listado.vc_ref1listado}" style="font-weight:bold;" />
+          <p:outputLabel value="Ref2listado :" for="txtRef2listado" />
+          <p:outputLabel id="txtRef2listado" value="#{listadoBean.listado.vc_ref2listado}" style="font-weight:bold;" />
+          <p:outputLabel value="Ref3listado :" for="txtRef3listado" />
+          <p:outputLabel id="txtRef3listado" value="#{listadoBean.listado.vc_ref3listado}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+          <p:outputLabel id="txtUsuingresa" value="#{listadoBean.listado.vc_usuingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+          <p:outputLabel id="txtFecingresa" value="#{listadoBean.listado.dt_fecingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+          <p:outputLabel id="txtUsumodifica" value="#{listadoBean.listado.vc_usumodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+          <p:outputLabel id="txtFecmodifica" value="#{listadoBean.listado.dt_fecmodifica}" style="font-weight:bold;" />
+        </h:panelGrid>
+      </p:panel>
+      <br />
+      <center >
+        <p:commandButton title="Cerrar Ventana" value="Cerrar" icon="close-windows" oncomplete="confirmCloseListado.show()" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Imprimir Detalle" value="Imprimir" icon="icon-print" onclick="window.print();" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmCloseListado" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseListado" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseListado" oncomplete="confirmCloseListado.hide(),carDialogDetailListado.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseListado" oncomplete="confirmCloseListado.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

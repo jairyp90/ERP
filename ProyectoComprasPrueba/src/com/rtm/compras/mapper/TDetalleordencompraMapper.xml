@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TDetalleordencompraMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TDetalleordencompra" >
+    <id column="in_iddetordcompra" property="in_iddetordcompra" jdbcType="INTEGER" />
+    <result column="db_cantdetordcompra" property="db_cantdetordcompra" jdbcType="DECIMAL" />
+    <result column="id_idunidetordcompra" property="id_idunidetordcompra" jdbcType="INTEGER" />
+    <result column="vc_desunidetordcompra" property="vc_desunidetordcompra" jdbcType="VARCHAR" />
+    <result column="vc_desdetordcompra" property="vc_desdetordcompra" jdbcType="VARCHAR" />
+    <result column="vc_desprecuordcompra" property="vc_desprecuordcompra" jdbcType="DECIMAL" />
+    <result column="vc_destotalordcompra" property="vc_destotalordcompra" jdbcType="DECIMAL" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_iddetordcompra, db_cantdetordcompra, id_idunidetordcompra, vc_desunidetordcompra, 
+    vc_desdetordcompra, vc_desprecuordcompra, vc_destotalordcompra, vc_usuingresa, dt_fecingresa, 
+    vc_usumodifica, dt_fecmodifica, bt_habilitado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_detalleordencompra
+    where in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    select in_iddetordcompra, db_cantdetordcompra, id_idunidetordcompra, vc_desunidetordcompra, 
+    vc_desdetordcompra, vc_desprecuordcompra, vc_destotalordcompra, vc_usuingresa, dt_fecingresa, 
+    vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_detalleordencompra where 1 = 1 
+    <if test="in_iddetordcompra != null" >
+        and in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="db_cantdetordcompra != null" >
+        and db_cantdetordcompra = #{db_cantdetordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="id_idunidetordcompra != null" >
+        and id_idunidetordcompra = #{id_idunidetordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_desunidetordcompra != null and vc_desunidetordcompra != ''" >
+        and vc_desunidetordcompra = #{vc_desunidetordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desdetordcompra != null and vc_desdetordcompra != ''" >
+        and vc_desdetordcompra = #{vc_desdetordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desprecuordcompra != null" >
+        and vc_desprecuordcompra = #{vc_desprecuordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_destotalordcompra != null" >
+        and vc_destotalordcompra = #{vc_destotalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    select in_iddetordcompra, db_cantdetordcompra, id_idunidetordcompra, vc_desunidetordcompra, 
+    vc_desdetordcompra, vc_desprecuordcompra, vc_destotalordcompra, vc_usuingresa, dt_fecingresa, 
+    vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_detalleordencompra where 1 = 1 
+    <if test="in_iddetordcompra != null" >
+        and in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="db_cantdetordcompra != null" >
+        and db_cantdetordcompra = #{db_cantdetordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="id_idunidetordcompra != null" >
+        and id_idunidetordcompra = #{id_idunidetordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_desunidetordcompra != null and vc_desunidetordcompra != ''" >
+        and vc_desunidetordcompra = #{vc_desunidetordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desdetordcompra != null and vc_desdetordcompra != ''" >
+        and vc_desdetordcompra = #{vc_desdetordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desprecuordcompra != null" >
+        and vc_desprecuordcompra = #{vc_desprecuordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_destotalordcompra != null" >
+        and vc_destotalordcompra = #{vc_destotalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_detalleordencompra
+    where in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    insert into t_detalleordencompra (in_iddetordcompra, db_cantdetordcompra, 
+      id_idunidetordcompra, vc_desunidetordcompra, 
+      vc_desdetordcompra, vc_desprecuordcompra, 
+      vc_destotalordcompra, vc_usuingresa, dt_fecingresa, 
+      vc_usumodifica, dt_fecmodifica, bt_habilitado
+      )
+    values (#{in_iddetordcompra,jdbcType=INTEGER}, #{db_cantdetordcompra,jdbcType=DECIMAL}, 
+      #{id_idunidetordcompra,jdbcType=INTEGER}, #{vc_desunidetordcompra,jdbcType=VARCHAR}, 
+      #{vc_desdetordcompra,jdbcType=VARCHAR}, #{vc_desprecuordcompra,jdbcType=DECIMAL}, 
+      #{vc_destotalordcompra,jdbcType=DECIMAL}, #{vc_usuingresa,jdbcType=VARCHAR}, #{dt_fecingresa,jdbcType=TIMESTAMP}, 
+      #{vc_usumodifica,jdbcType=VARCHAR}, #{dt_fecmodifica,jdbcType=TIMESTAMP}, #{bt_habilitado,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    insert into t_detalleordencompra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_iddetordcompra != null" >
+        in_iddetordcompra,
+      </if>
+      <if test="db_cantdetordcompra != null" >
+        db_cantdetordcompra,
+      </if>
+      <if test="id_idunidetordcompra != null" >
+        id_idunidetordcompra,
+      </if>
+      <if test="vc_desunidetordcompra != null" >
+        vc_desunidetordcompra,
+      </if>
+      <if test="vc_desdetordcompra != null" >
+        vc_desdetordcompra,
+      </if>
+      <if test="vc_desprecuordcompra != null" >
+        vc_desprecuordcompra,
+      </if>
+      <if test="vc_destotalordcompra != null" >
+        vc_destotalordcompra,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_iddetordcompra != null" >
+        #{in_iddetordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="db_cantdetordcompra != null" >
+        #{db_cantdetordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="id_idunidetordcompra != null" >
+        #{id_idunidetordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_desunidetordcompra != null" >
+        #{vc_desunidetordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desdetordcompra != null" >
+        #{vc_desdetordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desprecuordcompra != null" >
+        #{vc_desprecuordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_destotalordcompra != null" >
+        #{vc_destotalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_iddetordcompra" order="AFTER" >
+      SELECT @@IDENTITY as in_iddetordcompra;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    update t_detalleordencompra
+    <set >
+      <if test="db_cantdetordcompra != null" >
+        db_cantdetordcompra = #{db_cantdetordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="id_idunidetordcompra != null" >
+        id_idunidetordcompra = #{id_idunidetordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_desunidetordcompra != null" >
+        vc_desunidetordcompra = #{vc_desunidetordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desdetordcompra != null" >
+        vc_desdetordcompra = #{vc_desdetordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desprecuordcompra != null" >
+        vc_desprecuordcompra = #{vc_desprecuordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_destotalordcompra != null" >
+        vc_destotalordcompra = #{vc_destotalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TDetalleordencompra" >
+    update t_detalleordencompra
+    set db_cantdetordcompra = #{db_cantdetordcompra,jdbcType=DECIMAL},
+      id_idunidetordcompra = #{id_idunidetordcompra,jdbcType=INTEGER},
+      vc_desunidetordcompra = #{vc_desunidetordcompra,jdbcType=VARCHAR},
+      vc_desdetordcompra = #{vc_desdetordcompra,jdbcType=VARCHAR},
+      vc_desprecuordcompra = #{vc_desprecuordcompra,jdbcType=DECIMAL},
+      vc_destotalordcompra = #{vc_destotalordcompra,jdbcType=DECIMAL},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_iddetordcompra = #{in_iddetordcompra,jdbcType=INTEGER}
+  </update>
+</mapper>

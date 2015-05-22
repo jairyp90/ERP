@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TSolicitudMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TSolicitud" >
+    <id column="in_idsolicitud" property="in_idsolicitud" jdbcType="INTEGER" />
+    <result column="vc_nomsolicitud" property="vc_nomsolicitud" jdbcType="VARCHAR" />
+    <result column="vc_motsolicitud" property="vc_motsolicitud" jdbcType="VARCHAR" />
+    <result column="in_idlocsolicitud" property="in_idlocsolicitud" jdbcType="INTEGER" />
+    <result column="vc_deslocsolicitud" property="vc_deslocsolicitud" jdbcType="VARCHAR" />
+    <result column="vc_plazsolicitud" property="vc_plazsolicitud" jdbcType="TIMESTAMP" />
+    <result column="vc_obssolicitud" property="vc_obssolicitud" jdbcType="VARCHAR" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_idsolicitud, vc_nomsolicitud, vc_motsolicitud, in_idlocsolicitud, vc_deslocsolicitud, 
+    vc_plazsolicitud, vc_obssolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_solicitud
+    where in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TSolicitud" >
+    select in_idsolicitud, vc_nomsolicitud, vc_motsolicitud, in_idlocsolicitud, vc_deslocsolicitud, 
+    vc_plazsolicitud, vc_obssolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado
+    from t_solicitud where 1 = 1 
+    <if test="in_idsolicitud != null" >
+        and in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_nomsolicitud != null and vc_nomsolicitud != ''" >
+        and vc_nomsolicitud = #{vc_nomsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_motsolicitud != null and vc_motsolicitud != ''" >
+        and vc_motsolicitud = #{vc_motsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idlocsolicitud != null" >
+        and in_idlocsolicitud = #{in_idlocsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_deslocsolicitud != null and vc_deslocsolicitud != ''" >
+        and vc_deslocsolicitud = #{vc_deslocsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_plazsolicitud != null" >
+        and vc_plazsolicitud = #{vc_plazsolicitud,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_obssolicitud != null and vc_obssolicitud != ''" >
+        and vc_obssolicitud = #{vc_obssolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TSolicitud" >
+    select in_idsolicitud, vc_nomsolicitud, vc_motsolicitud, in_idlocsolicitud, vc_deslocsolicitud, 
+    vc_plazsolicitud, vc_obssolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado
+    from t_solicitud where 1 = 1 
+    <if test="in_idsolicitud != null" >
+        and in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_nomsolicitud != null and vc_nomsolicitud != ''" >
+        and vc_nomsolicitud = #{vc_nomsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_motsolicitud != null and vc_motsolicitud != ''" >
+        and vc_motsolicitud = #{vc_motsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idlocsolicitud != null" >
+        and in_idlocsolicitud = #{in_idlocsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_deslocsolicitud != null and vc_deslocsolicitud != ''" >
+        and vc_deslocsolicitud = #{vc_deslocsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_plazsolicitud != null" >
+        and vc_plazsolicitud = #{vc_plazsolicitud,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_obssolicitud != null and vc_obssolicitud != ''" >
+        and vc_obssolicitud = #{vc_obssolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_solicitud
+    where in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TSolicitud" >
+    insert into t_solicitud (in_idsolicitud, vc_nomsolicitud, 
+      vc_motsolicitud, in_idlocsolicitud, vc_deslocsolicitud, 
+      vc_plazsolicitud, vc_obssolicitud, vc_usuingresa, 
+      dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+      bt_habilitado)
+    values (#{in_idsolicitud,jdbcType=INTEGER}, #{vc_nomsolicitud,jdbcType=VARCHAR}, 
+      #{vc_motsolicitud,jdbcType=VARCHAR}, #{in_idlocsolicitud,jdbcType=INTEGER}, #{vc_deslocsolicitud,jdbcType=VARCHAR}, 
+      #{vc_plazsolicitud,jdbcType=TIMESTAMP}, #{vc_obssolicitud,jdbcType=VARCHAR}, #{vc_usuingresa,jdbcType=VARCHAR}, 
+      #{dt_fecingresa,jdbcType=TIMESTAMP}, #{vc_usumodifica,jdbcType=VARCHAR}, #{dt_fecmodifica,jdbcType=TIMESTAMP}, 
+      #{bt_habilitado,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TSolicitud" >
+    insert into t_solicitud
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_idsolicitud != null" >
+        in_idsolicitud,
+      </if>
+      <if test="vc_nomsolicitud != null" >
+        vc_nomsolicitud,
+      </if>
+      <if test="vc_motsolicitud != null" >
+        vc_motsolicitud,
+      </if>
+      <if test="in_idlocsolicitud != null" >
+        in_idlocsolicitud,
+      </if>
+      <if test="vc_deslocsolicitud != null" >
+        vc_deslocsolicitud,
+      </if>
+      <if test="vc_plazsolicitud != null" >
+        vc_plazsolicitud,
+      </if>
+      <if test="vc_obssolicitud != null" >
+        vc_obssolicitud,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_idsolicitud != null" >
+        #{in_idsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_nomsolicitud != null" >
+        #{vc_nomsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_motsolicitud != null" >
+        #{vc_motsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idlocsolicitud != null" >
+        #{in_idlocsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_deslocsolicitud != null" >
+        #{vc_deslocsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_plazsolicitud != null" >
+        #{vc_plazsolicitud,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_obssolicitud != null" >
+        #{vc_obssolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_idsolicitud" order="AFTER" >
+      SELECT @@IDENTITY as in_idsolicitud;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TSolicitud" >
+    update t_solicitud
+    <set >
+      <if test="vc_nomsolicitud != null" >
+        vc_nomsolicitud = #{vc_nomsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_motsolicitud != null" >
+        vc_motsolicitud = #{vc_motsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idlocsolicitud != null" >
+        in_idlocsolicitud = #{in_idlocsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_deslocsolicitud != null" >
+        vc_deslocsolicitud = #{vc_deslocsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_plazsolicitud != null" >
+        vc_plazsolicitud = #{vc_plazsolicitud,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_obssolicitud != null" >
+        vc_obssolicitud = #{vc_obssolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TSolicitud" >
+    update t_solicitud
+    set vc_nomsolicitud = #{vc_nomsolicitud,jdbcType=VARCHAR},
+      vc_motsolicitud = #{vc_motsolicitud,jdbcType=VARCHAR},
+      in_idlocsolicitud = #{in_idlocsolicitud,jdbcType=INTEGER},
+      vc_deslocsolicitud = #{vc_deslocsolicitud,jdbcType=VARCHAR},
+      vc_plazsolicitud = #{vc_plazsolicitud,jdbcType=TIMESTAMP},
+      vc_obssolicitud = #{vc_obssolicitud,jdbcType=VARCHAR},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_idsolicitud = #{in_idsolicitud,jdbcType=INTEGER}
+  </update>
+</mapper>

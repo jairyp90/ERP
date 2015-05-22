@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formNewOrdencompra" >
+    <p:dialog id="carDialogNewOrdencompra" header="Nuevo(a) Ordencompra" widgetVar="carDialogNewOrdencompra" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Ordencompra" >
+          <h:panelGrid cellspacing="4" columns="2" id="pgNuevoOrdencompra" >
+            <p:outputLabel value="Fechordcompra :" for="txtFechordcompra" />
+            <p:inputText id="txtFechordcompra" value="#{ordencompraBean.ordencompra.dt_fechordcompra}" required="true" requiredMessage="Ingrese fechordcompra" />
+            <p:outputLabel value="Nomproordcompra :" for="txtNomproordcompra" />
+            <p:inputText id="txtNomproordcompra" value="#{ordencompraBean.ordencompra.vc_nomproordcompra}" required="true" requiredMessage="Ingrese nomproordcompra" />
+            <p:outputLabel value="Rucordcompra :" for="txtRucordcompra" />
+            <p:inputText id="txtRucordcompra" value="#{ordencompraBean.ordencompra.vc_rucordcompra}" required="true" requiredMessage="Ingrese rucordcompra" />
+            <p:outputLabel value="Idmonordcompra :" for="txtIdmonordcompra" />
+            <p:inputText id="txtIdmonordcompra" value="#{ordencompraBean.ordencompra.in_idmonordcompra}" required="true" requiredMessage="Ingrese idmonordcompra" />
+            <p:outputLabel value="Desmonordcompra :" for="txtDesmonordcompra" />
+            <p:inputText id="txtDesmonordcompra" value="#{ordencompraBean.ordencompra.vc_desmonordcompra}" required="true" requiredMessage="Ingrese desmonordcompra" />
+            <p:outputLabel value="Idtipordcompra :" for="txtIdtipordcompra" />
+            <p:inputText id="txtIdtipordcompra" value="#{ordencompraBean.ordencompra.vc_idtipordcompra}" required="true" requiredMessage="Ingrese idtipordcompra" />
+            <p:outputLabel value="Destipordcompra :" for="txtDestipordcompra" />
+            <p:inputText id="txtDestipordcompra" value="#{ordencompraBean.ordencompra.vc_destipordcompra}" required="true" requiredMessage="Ingrese destipordcompra" />
+            <p:outputLabel value="Campoordcompra :" for="txtCampoordcompra" />
+            <p:inputText id="txtCampoordcompra" value="#{ordencompraBean.ordencompra.vc_campoordcompra}" required="true" requiredMessage="Ingrese campoordcompra" />
+            <p:outputLabel value="Bancoordcompra :" for="txtBancoordcompra" />
+            <p:inputText id="txtBancoordcompra" value="#{ordencompraBean.ordencompra.vc_bancoordcompra}" required="true" requiredMessage="Ingrese bancoordcompra" />
+            <p:outputLabel value="Emailordcompra :" for="txtEmailordcompra" />
+            <p:inputText id="txtEmailordcompra" value="#{ordencompraBean.ordencompra.vc_emailordcompra}" required="true" requiredMessage="Ingrese emailordcompra" />
+            <p:outputLabel value="Idlocordcompra :" for="txtIdlocordcompra" />
+            <p:inputText id="txtIdlocordcompra" value="#{ordencompraBean.ordencompra.in_idlocordcompra}" required="true" requiredMessage="Ingrese idlocordcompra" />
+            <p:outputLabel value="Deslocordcompra :" for="txtDeslocordcompra" />
+            <p:inputText id="txtDeslocordcompra" value="#{ordencompraBean.ordencompra.vc_deslocordcompra}" required="true" requiredMessage="Ingrese deslocordcompra" />
+            <p:outputLabel value="Areaordcompra :" for="txtAreaordcompra" />
+            <p:inputText id="txtAreaordcompra" value="#{ordencompraBean.ordencompra.vc_areaordcompra}" required="true" requiredMessage="Ingrese areaordcompra" />
+            <p:outputLabel value="Subareaordcompra :" for="txtSubareaordcompra" />
+            <p:inputText id="txtSubareaordcompra" value="#{ordencompraBean.ordencompra.vc_subareaordcompra}" required="true" requiredMessage="Ingrese subareaordcompra" />
+            <p:outputLabel value="Obsordcompra :" for="txtObsordcompra" />
+            <p:inputText id="txtObsordcompra" value="#{ordencompraBean.ordencompra.vc_obsordcompra}" required="true" requiredMessage="Ingrese obsordcompra" />
+            <p:outputLabel value="Subtotalordcompra :" for="txtSubtotalordcompra" />
+            <p:inputText id="txtSubtotalordcompra" value="#{ordencompraBean.ordencompra.db_subtotalordcompra}" required="true" requiredMessage="Ingrese subtotalordcompra" />
+            <p:outputLabel value="Igvordcompra :" for="txtIgvordcompra" />
+            <p:inputText id="txtIgvordcompra" value="#{ordencompraBean.ordencompra.db_igvordcompra}" required="true" requiredMessage="Ingrese igvordcompra" />
+            <p:outputLabel value="Totalordcompra :" for="txtTotalordcompra" />
+            <p:inputText id="txtTotalordcompra" value="#{ordencompraBean.ordencompra.db_totalordcompra}" required="true" requiredMessage="Ingrese totalordcompra" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{ordencompraBean.ordencompra.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{ordencompraBean.ordencompra.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{ordencompraBean.ordencompra.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{ordencompraBean.ordencompra.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Ordencompra" value="Guardar" icon="icon-save" update=":formListOrdencompra:msgOrdencompra" oncomplete="if(!args.validationFailed)confirmInsertOrdencompra.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseOrdencompraAdd.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmInsertOrdencompra" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmInsertOrdencompra" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Hacer el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmInsertOrdencompra,:formListOrdencompra:tablaListadoOrdencompra" oncomplete="confirmInsertOrdencompra.hide(),carDialogNewOrdencompra.hide()" actionListener="#{ordencompraBean.guardarRegistroOrdencompra}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmInsertOrdencompra" oncomplete="confirmInsertOrdencompra.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseOrdencompraAdd" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseOrdencompraAdd" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseOrdencompraAdd" oncomplete="confirmCloseOrdencompraAdd.hide(),carDialogNewOrdencompra.hide()" >
+        <p:resetInput target="pgNuevoOrdencompra" />
+      </p:commandButton>
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseOrdencompraAdd" oncomplete="confirmCloseOrdencompraAdd.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

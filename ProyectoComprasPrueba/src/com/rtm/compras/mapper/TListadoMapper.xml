@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TListadoMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TListado" >
+    <result column="in_idlistado" property="in_idlistado" jdbcType="INTEGER" />
+    <result column="vc_codlistado" property="vc_codlistado" jdbcType="VARCHAR" />
+    <result column="vc_deslistado" property="vc_deslistado" jdbcType="VARCHAR" />
+    <result column="vc_ref1listado" property="vc_ref1listado" jdbcType="VARCHAR" />
+    <result column="vc_ref2listado" property="vc_ref2listado" jdbcType="VARCHAR" />
+    <result column="vc_ref3listado" property="vc_ref3listado" jdbcType="VARCHAR" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TListado" >
+    select in_idlistado, vc_codlistado, vc_deslistado, vc_ref1listado, vc_ref2listado, 
+    vc_ref3listado, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_listado where 1 = 1 
+    <if test="in_idlistado != null" >
+        and in_idlistado = #{in_idlistado,jdbcType=INTEGER}
+    </if>
+    <if test="vc_codlistado != null and vc_codlistado != ''" >
+        and vc_codlistado = #{vc_codlistado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_deslistado != null and vc_deslistado != ''" >
+        and vc_deslistado = #{vc_deslistado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref1listado != null and vc_ref1listado != ''" >
+        and vc_ref1listado = #{vc_ref1listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref2listado != null and vc_ref2listado != ''" >
+        and vc_ref2listado = #{vc_ref2listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref3listado != null and vc_ref3listado != ''" >
+        and vc_ref3listado = #{vc_ref3listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  
+  
+
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TListado" >
+    select in_idlistado, vc_codlistado, vc_deslistado, vc_ref1listado, vc_ref2listado, 
+    vc_ref3listado, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_listado where 1 = 1 
+    <if test="in_idlistado != null" >
+        and in_idlistado = #{in_idlistado,jdbcType=INTEGER}
+    </if>
+    <if test="vc_codlistado != null and vc_codlistado != ''" >
+        and vc_codlistado = #{vc_codlistado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_deslistado != null and vc_deslistado != ''" >
+        and vc_deslistado = #{vc_deslistado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref1listado != null and vc_ref1listado != ''" >
+        and vc_ref1listado = #{vc_ref1listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref2listado != null and vc_ref2listado != ''" >
+        and vc_ref2listado = #{vc_ref2listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_ref3listado != null and vc_ref3listado != ''" >
+        and vc_ref3listado = #{vc_ref3listado,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TListado" >
+    insert into t_listado (in_idlistado, vc_codlistado, vc_deslistado, 
+      vc_ref1listado, vc_ref2listado, vc_ref3listado, 
+      vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+      dt_fecmodifica, bt_habilitado)
+    values (#{in_idlistado,jdbcType=INTEGER}, #{vc_codlistado,jdbcType=VARCHAR}, #{vc_deslistado,jdbcType=VARCHAR}, 
+      #{vc_ref1listado,jdbcType=VARCHAR}, #{vc_ref2listado,jdbcType=VARCHAR}, #{vc_ref3listado,jdbcType=VARCHAR}, 
+      #{vc_usuingresa,jdbcType=VARCHAR}, #{dt_fecingresa,jdbcType=TIMESTAMP}, #{vc_usumodifica,jdbcType=VARCHAR}, 
+      #{dt_fecmodifica,jdbcType=TIMESTAMP}, #{bt_habilitado,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TListado" >
+    insert into t_listado
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_idlistado != null" >
+        in_idlistado,
+      </if>
+      <if test="vc_codlistado != null" >
+        vc_codlistado,
+      </if>
+      <if test="vc_deslistado != null" >
+        vc_deslistado,
+      </if>
+      <if test="vc_ref1listado != null" >
+        vc_ref1listado,
+      </if>
+      <if test="vc_ref2listado != null" >
+        vc_ref2listado,
+      </if>
+      <if test="vc_ref3listado != null" >
+        vc_ref3listado,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_idlistado != null" >
+        #{in_idlistado,jdbcType=INTEGER},
+      </if>
+      <if test="vc_codlistado != null" >
+        #{vc_codlistado,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_deslistado != null" >
+        #{vc_deslistado,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_ref1listado != null" >
+        #{vc_ref1listado,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_ref2listado != null" >
+        #{vc_ref2listado,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_ref3listado != null" >
+        #{vc_ref3listado,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey />
+  </insert>
+</mapper>

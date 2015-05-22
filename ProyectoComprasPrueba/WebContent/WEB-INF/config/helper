@@ -1,0 +1,4 @@
+Cuando un campo sea numerico, se utilizo el componente de primefaces extensions: inputNumber.
+Para Poder utilizar dicho componente se agregaron 2 Jars : 
+-primefaces-extensions-1.2.1  y el commons-lang3-3.1.
+Y en el ui:composition se  agrega lo siguiente: xmlns:pe="http://primefaces.org/ui/extensions"

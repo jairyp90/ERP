@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListDetallesolicitud" >
+      <p:growl id="msgDetallesolicitud" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Detallesolicitud" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Detallesolicitud" actionListener="#{detallesolicitudBean.cargarDatosMaestros}" oncomplete="carDialogNewDetallesolicitud.show()" icon="icon-add" update=":formNewDetallesolicitud" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoDetallesolicitud" fileName="DetallesolicitudExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoDetallesolicitud" fileName="DetallesolicitudPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoDetallesolicitud" var="dto" value="#{detallesolicitudBean.listaDetallesolicitud}" rowKey="#{dto.in_iddetsolicitud}" selection="#{detallesolicitudBean.detallesolicitud}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Detallesolicitud Disponible" >
+        <p:ajax event="rowSelect" listener="#{detallesolicitudBean.onRowSelect}" />
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="artidetsolicitud" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_artidetsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="cantdetsolicitud" />
+          </f:facet>
+          <h:outputText value="#{dto.in_cantdetsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="obsdetsolicitud" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_obsdetsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="provdetsolicitud" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_provdetsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usumodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecmodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailDetallesolicitud:carDialogDetailDetallesolicitud" oncomplete="if(!args.validationFailed)carDialogDetailDetallesolicitud.show()" actionListener="#{detallesolicitudBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdateDetallesolicitud:carDialogUpdateDetallesolicitud" oncomplete="if(!args.validationFailed)carDialogUpdateDetallesolicitud.show()" actionListener="#{detallesolicitudBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeleteDetallesolicitud:confirmDeleteDetallesolicitud" oncomplete="if(!args.validationFailed)confirmDeleteDetallesolicitud.show()" actionListener="#{detallesolicitudBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaDetallesolicitud" >
+      <ui:include src="/paginas/detallesolicitud/addDetallesolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarDetallesolicitud" >
+      <ui:include src="/paginas/detallesolicitud/updateDetallesolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetalleDetallesolicitud" >
+      <ui:include src="/paginas/detallesolicitud/detailDetallesolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarDetallesolicitud" >
+      <ui:include src="/paginas/detallesolicitud/deleteDetallesolicitud.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

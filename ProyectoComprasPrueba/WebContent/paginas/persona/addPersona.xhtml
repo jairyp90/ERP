@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formNewPersona" >
+    <p:dialog id="carDialogNewPersona" header="Nuevo(a) Persona" widgetVar="carDialogNewPersona" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Persona" >
+          <h:panelGrid cellspacing="4" columns="2" id="pgNuevoPersona" >
+            <p:outputLabel value="Patpersona :" for="txtPatpersona" />
+            <p:inputText id="txtPatpersona" value="#{personaBean.persona.vc_patpersona}" required="true" requiredMessage="Ingrese patpersona" />
+            <p:outputLabel value="Matpersona :" for="txtMatpersona" />
+            <p:inputText id="txtMatpersona" value="#{personaBean.persona.vc_matpersona}" required="true" requiredMessage="Ingrese matpersona" />
+            <p:outputLabel value="Nompersona :" for="txtNompersona" />
+            <p:inputText id="txtNompersona" value="#{personaBean.persona.vc_nompersona}" required="true" requiredMessage="Ingrese nompersona" />
+            <p:outputLabel value="Telpersona :" for="txtTelpersona" />
+            <p:inputText id="txtTelpersona" value="#{personaBean.persona.vc_telpersona}" required="true" requiredMessage="Ingrese telpersona" />
+            <p:outputLabel value="Correopersona :" for="txtCorreopersona" />
+            <p:inputText id="txtCorreopersona" value="#{personaBean.persona.vc_correopersona}" required="true" requiredMessage="Ingrese correopersona" />
+            <p:outputLabel value="Usuario :" for="txtUsuario" />
+            <p:inputText id="txtUsuario" value="#{personaBean.persona.vc_usuario}" required="true" requiredMessage="Ingrese usuario" />
+            <p:outputLabel value="Contrasena :" for="txtContrasena" />
+            <p:inputText id="txtContrasena" value="#{personaBean.persona.vc_contrasena}" required="true" requiredMessage="Ingrese contrasena" />
+            <p:outputLabel value="Areapersona :" for="txtAreapersona" />
+            <p:inputText id="txtAreapersona" value="#{personaBean.persona.in_areapersona}" required="true" requiredMessage="Ingrese areapersona" />
+            <p:outputLabel value="Areapersona :" for="txtAreapersona" />
+            <p:inputText id="txtAreapersona" value="#{personaBean.persona.vc_areapersona}" required="true" requiredMessage="Ingrese areapersona" />
+            <p:outputLabel value="Cargopersona :" for="txtCargopersona" />
+            <p:inputText id="txtCargopersona" value="#{personaBean.persona.in_cargopersona}" required="true" requiredMessage="Ingrese cargopersona" />
+            <p:outputLabel value="Cargopersona :" for="txtCargopersona" />
+            <p:inputText id="txtCargopersona" value="#{personaBean.persona.vc_cargopersona}" required="true" requiredMessage="Ingrese cargopersona" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{personaBean.persona.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{personaBean.persona.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{personaBean.persona.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{personaBean.persona.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+            <p:outputLabel value="Diferent :" for="txtDiferent" />
+            <p:inputText id="txtDiferent" value="#{personaBean.persona.bt_diferent}" required="true" requiredMessage="Ingrese diferent" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Persona" value="Guardar" icon="icon-save" update=":formListPersona:msgPersona" oncomplete="if(!args.validationFailed)confirmInsertPersona.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmClosePersonaAdd.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmInsertPersona" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmInsertPersona" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Hacer el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmInsertPersona,:formListPersona:tablaListadoPersona" oncomplete="confirmInsertPersona.hide(),carDialogNewPersona.hide()" actionListener="#{personaBean.guardarRegistroPersona}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmInsertPersona" oncomplete="confirmInsertPersona.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmClosePersonaAdd" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmClosePersonaAdd" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmClosePersonaAdd" oncomplete="confirmClosePersonaAdd.hide(),carDialogNewPersona.hide()" >
+        <p:resetInput target="pgNuevoPersona" />
+      </p:commandButton>
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmClosePersonaAdd" oncomplete="confirmClosePersonaAdd.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

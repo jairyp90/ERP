@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListSolicitud" >
+      <p:growl id="msgSolicitud" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Solicitud" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Solicitud" actionListener="#{solicitudBean.cargarDatosMaestros}" oncomplete="carDialogNewSolicitud.show()" icon="icon-add" update=":formNewSolicitud" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoSolicitud" fileName="SolicitudExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoSolicitud" fileName="SolicitudPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoSolicitud" var="dto" value="#{solicitudBean.listaSolicitud}" rowKey="#{dto.in_idsolicitud}" selection="#{solicitudBean.solicitud}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Solicitud Disponible" >
+        <p:ajax event="rowSelect" listener="#{solicitudBean.onRowSelect}" />
+        <p:column >
+         <f:facet name="header" >
+            <h:outputText value="Numero" />
+          </f:facet>
+          <h:outputText value="#{dto.in_idsolicitud}" />
+        </p:column>
+        <p:column>
+          <f:facet name="header" >
+            <h:outputText value="Solicitante" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_nomsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Motivo" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_motsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Local" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_deslocsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Plazo" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_plazsolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Observacion" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_obssolicitud}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Usu. Ingreso" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Fec. Ingreso" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Usu. Modifico" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="Fec. Modifico" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailSolicitud:carDialogDetailSolicitud" oncomplete="if(!args.validationFailed)carDialogDetailSolicitud.show()" actionListener="#{solicitudBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdateSolicitud:carDialogUpdateSolicitud" oncomplete="if(!args.validationFailed)carDialogUpdateSolicitud.show()" actionListener="#{solicitudBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeleteSolicitud:confirmDeleteSolicitud" oncomplete="if(!args.validationFailed)confirmDeleteSolicitud.show()" actionListener="#{solicitudBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaSolicitud" >
+      <ui:include src="/paginas/solicitud/addSolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarSolicitud" >
+      <ui:include src="/paginas/solicitud/updateSolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetalleSolicitud" >
+      <ui:include src="/paginas/solicitud/detailSolicitud.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarSolicitud" >
+      <ui:include src="/paginas/solicitud/deleteSolicitud.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

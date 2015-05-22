@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formNewDetallesolicitud" >
+    <p:dialog id="carDialogNewDetallesolicitud" header="Nuevo(a) Detallesolicitud" widgetVar="carDialogNewDetallesolicitud" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Detallesolicitud" >
+          <h:panelGrid cellspacing="4" columns="2" id="pgNuevoDetallesolicitud" >
+            <p:outputLabel value="Artidetsolicitud :" for="txtArtidetsolicitud" />
+            <p:inputText id="txtArtidetsolicitud" value="#{detallesolicitudBean.detallesolicitud.vc_artidetsolicitud}" required="true" requiredMessage="Ingrese artidetsolicitud" />
+            <p:outputLabel value="Cantdetsolicitud :" for="txtCantdetsolicitud" />
+            <p:inputText id="txtCantdetsolicitud" value="#{detallesolicitudBean.detallesolicitud.in_cantdetsolicitud}" required="true" requiredMessage="Ingrese cantdetsolicitud" />
+            <p:outputLabel value="Obsdetsolicitud :" for="txtObsdetsolicitud" />
+            <p:inputText id="txtObsdetsolicitud" value="#{detallesolicitudBean.detallesolicitud.vc_obsdetsolicitud}" required="true" requiredMessage="Ingrese obsdetsolicitud" />
+            <p:outputLabel value="Provdetsolicitud :" for="txtProvdetsolicitud" />
+            <p:inputText id="txtProvdetsolicitud" value="#{detallesolicitudBean.detallesolicitud.vc_provdetsolicitud}" required="true" requiredMessage="Ingrese provdetsolicitud" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{detallesolicitudBean.detallesolicitud.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{detallesolicitudBean.detallesolicitud.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{detallesolicitudBean.detallesolicitud.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{detallesolicitudBean.detallesolicitud.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Detallesolicitud" value="Guardar" icon="icon-save" update=":formListDetallesolicitud:msgDetallesolicitud" oncomplete="if(!args.validationFailed)confirmInsertDetallesolicitud.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseDetallesolicitudAdd.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmInsertDetallesolicitud" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmInsertDetallesolicitud" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Hacer el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmInsertDetallesolicitud,:formListDetallesolicitud:tablaListadoDetallesolicitud" oncomplete="confirmInsertDetallesolicitud.hide(),carDialogNewDetallesolicitud.hide()" actionListener="#{detallesolicitudBean.guardarRegistroDetallesolicitud}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmInsertDetallesolicitud" oncomplete="confirmInsertDetallesolicitud.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseDetallesolicitudAdd" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseDetallesolicitudAdd" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseDetallesolicitudAdd" oncomplete="confirmCloseDetallesolicitudAdd.hide(),carDialogNewDetallesolicitud.hide()" >
+        <p:resetInput target="pgNuevoDetallesolicitud" />
+      </p:commandButton>
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseDetallesolicitudAdd" oncomplete="confirmCloseDetallesolicitudAdd.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDetailArticulo" >
+    <p:dialog id="carDialogDetailArticulo" header="Detalle Articulo" widgetVar="carDialogDetailArticulo" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgDetalleArticulo" cellpadding="0" cellspacing="2" width="100%" />
+      <p:panel header="Datos de Articulo" >
+        <h:panelGrid cellspacing="4" columns="2" >
+          <p:outputLabel value="Codarticulo :" for="txtCodarticulo" />
+          <p:outputLabel id="txtCodarticulo" value="#{articuloBean.articulo.vc_codarticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Desarticulo :" for="txtDesarticulo" />
+          <p:outputLabel id="txtDesarticulo" value="#{articuloBean.articulo.vc_desarticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Tiparticulo :" for="txtTiparticulo" />
+          <p:outputLabel id="txtTiparticulo" value="#{articuloBean.articulo.vc_tiparticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Mararticulo :" for="txtMararticulo" />
+          <p:outputLabel id="txtMararticulo" value="#{articuloBean.articulo.vc_mararticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Modarticulo :" for="txtModarticulo" />
+          <p:outputLabel id="txtModarticulo" value="#{articuloBean.articulo.vc_modarticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Medarticulo :" for="txtMedarticulo" />
+          <p:outputLabel id="txtMedarticulo" value="#{articuloBean.articulo.vc_medarticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Equarticulo :" for="txtEquarticulo" />
+          <p:outputLabel id="txtEquarticulo" value="#{articuloBean.articulo.vc_equarticulo}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+          <p:outputLabel id="txtUsuingresa" value="#{articuloBean.articulo.vc_usuingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+          <p:outputLabel id="txtFecingresa" value="#{articuloBean.articulo.dt_fecingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+          <p:outputLabel id="txtUsumodifica" value="#{articuloBean.articulo.vc_usumodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+          <p:outputLabel id="txtFecmodifica" value="#{articuloBean.articulo.dt_fecmodifica}" style="font-weight:bold;" />
+        </h:panelGrid>
+      </p:panel>
+      <br />
+      <center >
+        <p:commandButton title="Cerrar Ventana" value="Cerrar" icon="close-windows" oncomplete="confirmCloseArticulo.show()" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Imprimir Detalle" value="Imprimir" icon="icon-print" onclick="window.print();" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmCloseArticulo" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseArticulo" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseArticulo" oncomplete="confirmCloseArticulo.hide(),carDialogDetailArticulo.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseArticulo" oncomplete="confirmCloseArticulo.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

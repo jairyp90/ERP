@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	  xmlns:f="http://java.sun.com/jsf/core"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</h:head>
+<h:body>
+  <ui:composition>
+    <p:panelGrid styleClass="cabecera" style="width:100%;">
+    		<p:row style="width:100%; ">
+    			<p:column style="width:30px;">
+			        <p:graphicImage value="/resources/img/galeria/tecnimotors.jpg" height="70px" />
+    			</p:column>
+    			<p:column  style="width:60%;">
+				    &nbsp;<h:outputLabel value="Una Experiencia Asegurada" styleClass="title_cabecera" /> 
+    			</p:column>    			
+    			<p:column>
+						<div class="ui-grid-row">
+							<div class="datos_usuario_left">
+						    &nbsp;Bienvenido(a): <b><p:outputLabel value="#{loginBean.usuario.vc_usuario}" /></b> 
+						    <br/>&nbsp;Nombre: <b><p:outputLabel value="#{loginBean.usuario.vc_nompersona} #{loginBean.usuario.vc_patpersona}" /></b>
+						 
+						</div>						
+						<div class="datos_usuario_left" style="float: right">
+					        <p:graphicImage value="#{loginBean.image}" height="60px" style="text-align: center" cache="false" tittle="Foto"/>
+						</div>
+ 					</div>    			
+    			</p:column>
+  			
+    		</p:row>
+ 
+	 </p:panelGrid>
+	 <br/> 
+  </ui:composition>
+
+</h:body>
+</html>

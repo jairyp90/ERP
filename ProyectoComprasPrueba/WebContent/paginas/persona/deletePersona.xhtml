@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDeletePersona" >
+    <p:confirmDialog id="confirmDeletePersona" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmDeletePersona" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Eliminar?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmDeletePersona,:formListPersona:tablaListadoPersona" oncomplete="confirmDeletePersona.hide()" actionListener="#{personaBean.eliminarRegistroPersona}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmDeletePersona" oncomplete="confirmDeletePersona.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

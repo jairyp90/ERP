@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formUpdateArticulo" >
+    <p:dialog id="carDialogUpdateArticulo" header="Actualizar Articulo" widgetVar="carDialogUpdateArticulo" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgActualizaArticulo" cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Articulo" >
+          <h:panelGrid cellspacing="4" columns="2" >
+            <p:outputLabel value="Codarticulo :" for="txtCodarticulo" />
+            <p:inputText id="txtCodarticulo" value="#{articuloBean.articulo.vc_codarticulo}" required="true" requiredMessage="Ingrese codarticulo" />
+            <p:outputLabel value="Desarticulo :" for="txtDesarticulo" />
+            <p:inputText id="txtDesarticulo" value="#{articuloBean.articulo.vc_desarticulo}" required="true" requiredMessage="Ingrese desarticulo" />
+            <p:outputLabel value="Tiparticulo :" for="txtTiparticulo" />
+            <p:inputText id="txtTiparticulo" value="#{articuloBean.articulo.vc_tiparticulo}" required="true" requiredMessage="Ingrese tiparticulo" />
+            <p:outputLabel value="Mararticulo :" for="txtMararticulo" />
+            <p:inputText id="txtMararticulo" value="#{articuloBean.articulo.vc_mararticulo}" required="true" requiredMessage="Ingrese mararticulo" />
+            <p:outputLabel value="Modarticulo :" for="txtModarticulo" />
+            <p:inputText id="txtModarticulo" value="#{articuloBean.articulo.vc_modarticulo}" required="true" requiredMessage="Ingrese modarticulo" />
+            <p:outputLabel value="Medarticulo :" for="txtMedarticulo" />
+            <p:inputText id="txtMedarticulo" value="#{articuloBean.articulo.vc_medarticulo}" required="true" requiredMessage="Ingrese medarticulo" />
+            <p:outputLabel value="Equarticulo :" for="txtEquarticulo" />
+            <p:inputText id="txtEquarticulo" value="#{articuloBean.articulo.vc_equarticulo}" required="true" requiredMessage="Ingrese equarticulo" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{articuloBean.articulo.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{articuloBean.articulo.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{articuloBean.articulo.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{articuloBean.articulo.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Articulo" value="Guardar" icon="icon-save" update=":formListArticulo:msgArticulo" oncomplete="if(!args.validationFailed)confirmUpdateArticulo.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseArticuloUpdate.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmUpdateArticulo" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmUpdateArticulo" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Actualizar el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmUpdateArticulo,:formListArticulo:tablaListadoArticulo" oncomplete="confirmUpdateArticulo.hide(),carDialogUpdateArticulo.hide()" actionListener="#{articuloBean.actualizarRegistroArticulo}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmUpdateArticulo" oncomplete="confirmUpdateArticulo.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseArticuloUpdate" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseArticuloUpdate" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseArticuloUpdate" oncomplete="confirmCloseArticuloUpdate.hide(),carDialogUpdateArticulo.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseArticuloUpdate" oncomplete="confirmCloseArticuloUpdate.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

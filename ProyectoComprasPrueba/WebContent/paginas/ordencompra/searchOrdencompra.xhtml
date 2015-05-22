@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListOrdencompra" >
+      <p:growl id="msgOrdencompra" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Ordencompra" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Ordencompra" actionListener="#{ordencompraBean.cargarDatosMaestros}" oncomplete="carDialogNewOrdencompra.show()" icon="icon-add" update=":formNewOrdencompra" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoOrdencompra" fileName="OrdencompraExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoOrdencompra" fileName="OrdencompraPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoOrdencompra" var="dto" value="#{ordencompraBean.listaOrdencompra}" rowKey="#{dto.in_idordcompra}" selection="#{ordencompraBean.ordencompra}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Ordencompra Disponible" >
+        <p:ajax event="rowSelect" listener="#{ordencompraBean.onRowSelect}" />
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fechordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fechordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="nomproordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_nomproordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="rucordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_rucordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="idmonordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.in_idmonordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="desmonordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_desmonordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="idtipordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_idtipordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="destipordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_destipordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="campoordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_campoordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="bancoordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_bancoordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="emailordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_emailordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="idlocordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.in_idlocordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="deslocordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_deslocordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="areaordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_areaordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="subareaordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_subareaordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="obsordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_obsordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="subtotalordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.db_subtotalordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="igvordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.db_igvordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="totalordcompra" />
+          </f:facet>
+          <h:outputText value="#{dto.db_totalordcompra}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usumodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecmodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailOrdencompra:carDialogDetailOrdencompra" oncomplete="if(!args.validationFailed)carDialogDetailOrdencompra.show()" actionListener="#{ordencompraBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdateOrdencompra:carDialogUpdateOrdencompra" oncomplete="if(!args.validationFailed)carDialogUpdateOrdencompra.show()" actionListener="#{ordencompraBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeleteOrdencompra:confirmDeleteOrdencompra" oncomplete="if(!args.validationFailed)confirmDeleteOrdencompra.show()" actionListener="#{ordencompraBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaOrdencompra" >
+      <ui:include src="/paginas/ordencompra/addOrdencompra.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarOrdencompra" >
+      <ui:include src="/paginas/ordencompra/updateOrdencompra.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetalleOrdencompra" >
+      <ui:include src="/paginas/ordencompra/detailOrdencompra.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarOrdencompra" >
+      <ui:include src="/paginas/ordencompra/deleteOrdencompra.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

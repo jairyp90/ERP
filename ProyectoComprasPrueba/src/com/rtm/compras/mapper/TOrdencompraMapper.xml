@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TOrdencompraMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TOrdencompra" >
+    <id column="in_idordcompra" property="in_idordcompra" jdbcType="INTEGER" />
+    <result column="dt_fechordcompra" property="dt_fechordcompra" jdbcType="TIMESTAMP" />
+    <result column="vc_nomproordcompra" property="vc_nomproordcompra" jdbcType="VARCHAR" />
+    <result column="vc_rucordcompra" property="vc_rucordcompra" jdbcType="VARCHAR" />
+    <result column="in_idmonordcompra" property="in_idmonordcompra" jdbcType="INTEGER" />
+    <result column="vc_desmonordcompra" property="vc_desmonordcompra" jdbcType="VARCHAR" />
+    <result column="vc_idtipordcompra" property="vc_idtipordcompra" jdbcType="INTEGER" />
+    <result column="vc_destipordcompra" property="vc_destipordcompra" jdbcType="VARCHAR" />
+    <result column="vc_campoordcompra" property="vc_campoordcompra" jdbcType="VARCHAR" />
+    <result column="vc_bancoordcompra" property="vc_bancoordcompra" jdbcType="VARCHAR" />
+    <result column="vc_emailordcompra" property="vc_emailordcompra" jdbcType="VARCHAR" />
+    <result column="in_idlocordcompra" property="in_idlocordcompra" jdbcType="INTEGER" />
+    <result column="vc_deslocordcompra" property="vc_deslocordcompra" jdbcType="VARCHAR" />
+    <result column="vc_areaordcompra" property="vc_areaordcompra" jdbcType="VARCHAR" />
+    <result column="vc_subareaordcompra" property="vc_subareaordcompra" jdbcType="VARCHAR" />
+    <result column="vc_obsordcompra" property="vc_obsordcompra" jdbcType="VARCHAR" />
+    <result column="db_subtotalordcompra" property="db_subtotalordcompra" jdbcType="DECIMAL" />
+    <result column="db_igvordcompra" property="db_igvordcompra" jdbcType="DECIMAL" />
+    <result column="db_totalordcompra" property="db_totalordcompra" jdbcType="DECIMAL" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_idordcompra, dt_fechordcompra, vc_nomproordcompra, vc_rucordcompra, in_idmonordcompra, 
+    vc_desmonordcompra, vc_idtipordcompra, vc_destipordcompra, vc_campoordcompra, vc_bancoordcompra, 
+    vc_emailordcompra, in_idlocordcompra, vc_deslocordcompra, vc_areaordcompra, vc_subareaordcompra, 
+    vc_obsordcompra, db_subtotalordcompra, db_igvordcompra, db_totalordcompra, vc_usuingresa, 
+    dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_habilitado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_ordencompra
+    where in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    select in_idordcompra, dt_fechordcompra, vc_nomproordcompra, vc_rucordcompra, in_idmonordcompra, 
+    vc_desmonordcompra, vc_idtipordcompra, vc_destipordcompra, vc_campoordcompra, vc_bancoordcompra, 
+    vc_emailordcompra, in_idlocordcompra, vc_deslocordcompra, vc_areaordcompra, vc_subareaordcompra, 
+    vc_obsordcompra, db_subtotalordcompra, db_igvordcompra, db_totalordcompra, vc_usuingresa, 
+    dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_ordencompra where 1 = 1 
+    <if test="in_idordcompra != null" >
+        and in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="dt_fechordcompra != null" >
+        and dt_fechordcompra = #{dt_fechordcompra,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_nomproordcompra != null and vc_nomproordcompra != ''" >
+        and vc_nomproordcompra = #{vc_nomproordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_rucordcompra != null and vc_rucordcompra != ''" >
+        and vc_rucordcompra = #{vc_rucordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idmonordcompra != null" >
+        and in_idmonordcompra = #{in_idmonordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_desmonordcompra != null and vc_desmonordcompra != ''" >
+        and vc_desmonordcompra = #{vc_desmonordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_idtipordcompra != null" >
+        and vc_idtipordcompra = #{vc_idtipordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_destipordcompra != null and vc_destipordcompra != ''" >
+        and vc_destipordcompra = #{vc_destipordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_campoordcompra != null and vc_campoordcompra != ''" >
+        and vc_campoordcompra = #{vc_campoordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_bancoordcompra != null and vc_bancoordcompra != ''" >
+        and vc_bancoordcompra = #{vc_bancoordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_emailordcompra != null and vc_emailordcompra != ''" >
+        and vc_emailordcompra = #{vc_emailordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idlocordcompra != null" >
+        and in_idlocordcompra = #{in_idlocordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_deslocordcompra != null and vc_deslocordcompra != ''" >
+        and vc_deslocordcompra = #{vc_deslocordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_areaordcompra != null and vc_areaordcompra != ''" >
+        and vc_areaordcompra = #{vc_areaordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_subareaordcompra != null and vc_subareaordcompra != ''" >
+        and vc_subareaordcompra = #{vc_subareaordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_obsordcompra != null and vc_obsordcompra != ''" >
+        and vc_obsordcompra = #{vc_obsordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="db_subtotalordcompra != null" >
+        and db_subtotalordcompra = #{db_subtotalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="db_igvordcompra != null" >
+        and db_igvordcompra = #{db_igvordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="db_totalordcompra != null" >
+        and db_totalordcompra = #{db_totalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    select in_idordcompra, dt_fechordcompra, vc_nomproordcompra, vc_rucordcompra, in_idmonordcompra, 
+    vc_desmonordcompra, vc_idtipordcompra, vc_destipordcompra, vc_campoordcompra, vc_bancoordcompra, 
+    vc_emailordcompra, in_idlocordcompra, vc_deslocordcompra, vc_areaordcompra, vc_subareaordcompra, 
+    vc_obsordcompra, db_subtotalordcompra, db_igvordcompra, db_totalordcompra, vc_usuingresa, 
+    dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_habilitado
+    from t_ordencompra where 1 = 1 
+    <if test="in_idordcompra != null" >
+        and in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="dt_fechordcompra != null" >
+        and dt_fechordcompra = #{dt_fechordcompra,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_nomproordcompra != null and vc_nomproordcompra != ''" >
+        and vc_nomproordcompra = #{vc_nomproordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_rucordcompra != null and vc_rucordcompra != ''" >
+        and vc_rucordcompra = #{vc_rucordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idmonordcompra != null" >
+        and in_idmonordcompra = #{in_idmonordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_desmonordcompra != null and vc_desmonordcompra != ''" >
+        and vc_desmonordcompra = #{vc_desmonordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_idtipordcompra != null" >
+        and vc_idtipordcompra = #{vc_idtipordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_destipordcompra != null and vc_destipordcompra != ''" >
+        and vc_destipordcompra = #{vc_destipordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_campoordcompra != null and vc_campoordcompra != ''" >
+        and vc_campoordcompra = #{vc_campoordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_bancoordcompra != null and vc_bancoordcompra != ''" >
+        and vc_bancoordcompra = #{vc_bancoordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_emailordcompra != null and vc_emailordcompra != ''" >
+        and vc_emailordcompra = #{vc_emailordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="in_idlocordcompra != null" >
+        and in_idlocordcompra = #{in_idlocordcompra,jdbcType=INTEGER}
+    </if>
+    <if test="vc_deslocordcompra != null and vc_deslocordcompra != ''" >
+        and vc_deslocordcompra = #{vc_deslocordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_areaordcompra != null and vc_areaordcompra != ''" >
+        and vc_areaordcompra = #{vc_areaordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_subareaordcompra != null and vc_subareaordcompra != ''" >
+        and vc_subareaordcompra = #{vc_subareaordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_obsordcompra != null and vc_obsordcompra != ''" >
+        and vc_obsordcompra = #{vc_obsordcompra,jdbcType=VARCHAR}
+    </if>
+    <if test="db_subtotalordcompra != null" >
+        and db_subtotalordcompra = #{db_subtotalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="db_igvordcompra != null" >
+        and db_igvordcompra = #{db_igvordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="db_totalordcompra != null" >
+        and db_totalordcompra = #{db_totalordcompra,jdbcType=DECIMAL}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_ordencompra
+    where in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    insert into t_ordencompra (in_idordcompra, dt_fechordcompra, 
+      vc_nomproordcompra, vc_rucordcompra, in_idmonordcompra, 
+      vc_desmonordcompra, vc_idtipordcompra, 
+      vc_destipordcompra, vc_campoordcompra, 
+      vc_bancoordcompra, vc_emailordcompra, in_idlocordcompra, 
+      vc_deslocordcompra, vc_areaordcompra, vc_subareaordcompra, 
+      vc_obsordcompra, db_subtotalordcompra, 
+      db_igvordcompra, db_totalordcompra, vc_usuingresa, 
+      dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+      bt_habilitado)
+    values (#{in_idordcompra,jdbcType=INTEGER}, #{dt_fechordcompra,jdbcType=TIMESTAMP}, 
+      #{vc_nomproordcompra,jdbcType=VARCHAR}, #{vc_rucordcompra,jdbcType=VARCHAR}, #{in_idmonordcompra,jdbcType=INTEGER}, 
+      #{vc_desmonordcompra,jdbcType=VARCHAR}, #{vc_idtipordcompra,jdbcType=INTEGER}, 
+      #{vc_destipordcompra,jdbcType=VARCHAR}, #{vc_campoordcompra,jdbcType=VARCHAR}, 
+      #{vc_bancoordcompra,jdbcType=VARCHAR}, #{vc_emailordcompra,jdbcType=VARCHAR}, #{in_idlocordcompra,jdbcType=INTEGER}, 
+      #{vc_deslocordcompra,jdbcType=VARCHAR}, #{vc_areaordcompra,jdbcType=VARCHAR}, #{vc_subareaordcompra,jdbcType=VARCHAR}, 
+      #{vc_obsordcompra,jdbcType=VARCHAR}, #{db_subtotalordcompra,jdbcType=DECIMAL}, 
+      #{db_igvordcompra,jdbcType=DECIMAL}, #{db_totalordcompra,jdbcType=DECIMAL}, #{vc_usuingresa,jdbcType=VARCHAR}, 
+      #{dt_fecingresa,jdbcType=TIMESTAMP}, #{vc_usumodifica,jdbcType=VARCHAR}, #{dt_fecmodifica,jdbcType=TIMESTAMP}, 
+      #{bt_habilitado,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    insert into t_ordencompra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_idordcompra != null" >
+        in_idordcompra,
+      </if>
+      <if test="dt_fechordcompra != null" >
+        dt_fechordcompra,
+      </if>
+      <if test="vc_nomproordcompra != null" >
+        vc_nomproordcompra,
+      </if>
+      <if test="vc_rucordcompra != null" >
+        vc_rucordcompra,
+      </if>
+      <if test="in_idmonordcompra != null" >
+        in_idmonordcompra,
+      </if>
+      <if test="vc_desmonordcompra != null" >
+        vc_desmonordcompra,
+      </if>
+      <if test="vc_idtipordcompra != null" >
+        vc_idtipordcompra,
+      </if>
+      <if test="vc_destipordcompra != null" >
+        vc_destipordcompra,
+      </if>
+      <if test="vc_campoordcompra != null" >
+        vc_campoordcompra,
+      </if>
+      <if test="vc_bancoordcompra != null" >
+        vc_bancoordcompra,
+      </if>
+      <if test="vc_emailordcompra != null" >
+        vc_emailordcompra,
+      </if>
+      <if test="in_idlocordcompra != null" >
+        in_idlocordcompra,
+      </if>
+      <if test="vc_deslocordcompra != null" >
+        vc_deslocordcompra,
+      </if>
+      <if test="vc_areaordcompra != null" >
+        vc_areaordcompra,
+      </if>
+      <if test="vc_subareaordcompra != null" >
+        vc_subareaordcompra,
+      </if>
+      <if test="vc_obsordcompra != null" >
+        vc_obsordcompra,
+      </if>
+      <if test="db_subtotalordcompra != null" >
+        db_subtotalordcompra,
+      </if>
+      <if test="db_igvordcompra != null" >
+        db_igvordcompra,
+      </if>
+      <if test="db_totalordcompra != null" >
+        db_totalordcompra,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_idordcompra != null" >
+        #{in_idordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="dt_fechordcompra != null" >
+        #{dt_fechordcompra,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_nomproordcompra != null" >
+        #{vc_nomproordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_rucordcompra != null" >
+        #{vc_rucordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idmonordcompra != null" >
+        #{in_idmonordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_desmonordcompra != null" >
+        #{vc_desmonordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_idtipordcompra != null" >
+        #{vc_idtipordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_destipordcompra != null" >
+        #{vc_destipordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_campoordcompra != null" >
+        #{vc_campoordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_bancoordcompra != null" >
+        #{vc_bancoordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_emailordcompra != null" >
+        #{vc_emailordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idlocordcompra != null" >
+        #{in_idlocordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_deslocordcompra != null" >
+        #{vc_deslocordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_areaordcompra != null" >
+        #{vc_areaordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_subareaordcompra != null" >
+        #{vc_subareaordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_obsordcompra != null" >
+        #{vc_obsordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="db_subtotalordcompra != null" >
+        #{db_subtotalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="db_igvordcompra != null" >
+        #{db_igvordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="db_totalordcompra != null" >
+        #{db_totalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_idordcompra" order="AFTER" >
+      SELECT @@IDENTITY as in_idordcompra;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    update t_ordencompra
+    <set >
+      <if test="dt_fechordcompra != null" >
+        dt_fechordcompra = #{dt_fechordcompra,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_nomproordcompra != null" >
+        vc_nomproordcompra = #{vc_nomproordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_rucordcompra != null" >
+        vc_rucordcompra = #{vc_rucordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idmonordcompra != null" >
+        in_idmonordcompra = #{in_idmonordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_desmonordcompra != null" >
+        vc_desmonordcompra = #{vc_desmonordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_idtipordcompra != null" >
+        vc_idtipordcompra = #{vc_idtipordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_destipordcompra != null" >
+        vc_destipordcompra = #{vc_destipordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_campoordcompra != null" >
+        vc_campoordcompra = #{vc_campoordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_bancoordcompra != null" >
+        vc_bancoordcompra = #{vc_bancoordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_emailordcompra != null" >
+        vc_emailordcompra = #{vc_emailordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="in_idlocordcompra != null" >
+        in_idlocordcompra = #{in_idlocordcompra,jdbcType=INTEGER},
+      </if>
+      <if test="vc_deslocordcompra != null" >
+        vc_deslocordcompra = #{vc_deslocordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_areaordcompra != null" >
+        vc_areaordcompra = #{vc_areaordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_subareaordcompra != null" >
+        vc_subareaordcompra = #{vc_subareaordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_obsordcompra != null" >
+        vc_obsordcompra = #{vc_obsordcompra,jdbcType=VARCHAR},
+      </if>
+      <if test="db_subtotalordcompra != null" >
+        db_subtotalordcompra = #{db_subtotalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="db_igvordcompra != null" >
+        db_igvordcompra = #{db_igvordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="db_totalordcompra != null" >
+        db_totalordcompra = #{db_totalordcompra,jdbcType=DECIMAL},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TOrdencompra" >
+    update t_ordencompra
+    set dt_fechordcompra = #{dt_fechordcompra,jdbcType=TIMESTAMP},
+      vc_nomproordcompra = #{vc_nomproordcompra,jdbcType=VARCHAR},
+      vc_rucordcompra = #{vc_rucordcompra,jdbcType=VARCHAR},
+      in_idmonordcompra = #{in_idmonordcompra,jdbcType=INTEGER},
+      vc_desmonordcompra = #{vc_desmonordcompra,jdbcType=VARCHAR},
+      vc_idtipordcompra = #{vc_idtipordcompra,jdbcType=INTEGER},
+      vc_destipordcompra = #{vc_destipordcompra,jdbcType=VARCHAR},
+      vc_campoordcompra = #{vc_campoordcompra,jdbcType=VARCHAR},
+      vc_bancoordcompra = #{vc_bancoordcompra,jdbcType=VARCHAR},
+      vc_emailordcompra = #{vc_emailordcompra,jdbcType=VARCHAR},
+      in_idlocordcompra = #{in_idlocordcompra,jdbcType=INTEGER},
+      vc_deslocordcompra = #{vc_deslocordcompra,jdbcType=VARCHAR},
+      vc_areaordcompra = #{vc_areaordcompra,jdbcType=VARCHAR},
+      vc_subareaordcompra = #{vc_subareaordcompra,jdbcType=VARCHAR},
+      vc_obsordcompra = #{vc_obsordcompra,jdbcType=VARCHAR},
+      db_subtotalordcompra = #{db_subtotalordcompra,jdbcType=DECIMAL},
+      db_igvordcompra = #{db_igvordcompra,jdbcType=DECIMAL},
+      db_totalordcompra = #{db_totalordcompra,jdbcType=DECIMAL},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_idordcompra = #{in_idordcompra,jdbcType=INTEGER}
+  </update>
+</mapper>

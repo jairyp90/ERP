@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListPersona" >
+      <p:growl id="msgPersona" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Persona" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Persona" actionListener="#{personaBean.cargarDatosMaestros}" oncomplete="carDialogNewPersona.show()" icon="icon-add" update=":formNewPersona" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoPersona" fileName="PersonaExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoPersona" fileName="PersonaPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoPersona" var="dto" value="#{personaBean.listaPersona}" rowKey="#{dto.in_idpersona}" selection="#{personaBean.persona}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Persona Disponible" >
+        <p:ajax event="rowSelect" listener="#{personaBean.onRowSelect}" />
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="patpersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_patpersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="matpersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_matpersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="nompersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_nompersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="telpersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_telpersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="correopersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_correopersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuario" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuario}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="contrasena" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_contrasena}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="areapersona" />
+          </f:facet>
+          <h:outputText value="#{dto.in_areapersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="areapersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_areapersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="cargopersona" />
+          </f:facet>
+          <h:outputText value="#{dto.in_cargopersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="cargopersona" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_cargopersona}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usumodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecmodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="diferent" />
+          </f:facet>
+          <h:outputText value="#{dto.bt_diferent}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailPersona:carDialogDetailPersona" oncomplete="if(!args.validationFailed)carDialogDetailPersona.show()" actionListener="#{personaBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdatePersona:carDialogUpdatePersona" oncomplete="if(!args.validationFailed)carDialogUpdatePersona.show()" actionListener="#{personaBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeletePersona:confirmDeletePersona" oncomplete="if(!args.validationFailed)confirmDeletePersona.show()" actionListener="#{personaBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaPersona" >
+      <ui:include src="/paginas/persona/addPersona.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarPersona" >
+      <ui:include src="/paginas/persona/updatePersona.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetallePersona" >
+      <ui:include src="/paginas/persona/detailPersona.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarPersona" >
+      <ui:include src="/paginas/persona/deletePersona.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

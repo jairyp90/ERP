@@ -1,0 +1,219 @@
+.ui-state-default .icon-add{
+	background-image: url("../img/icon-menu/create.png");
+}
+
+.ui-state-default .icon-find{
+	background-image:url("../img/icon-menu/find.png");
+}
+
+.ui-state-default .icon-detalles{
+	background-image:url("../img/icon-menu/detalles.png");
+}
+
+.ui-state-default .icon-edit{
+	background-image:url("../img/icon-menu/update.png");
+}
+
+.ui-state-default .clean{
+	background-image:url("../img/icon-menu/clear.png");
+}
+
+.ui-state-default .search{
+	background-image:url("../img/icon-menu/search.png");
+}
+
+.ui-state-default .icon-delete{
+	background-image:url("../img/icon-menu/trash.png");
+}
+
+.ui-state-default .icon-save{
+	background-image:url("../img/icon-menu/save.png");
+}
+.ui-state-default .icon-clear{
+	background-image:url("../img/icon-menu/clear.png");
+}
+
+.ui-state-default .icon-cancel{
+	background-image:url("../img/icon-menu/cancel.png");
+}
+
+.ui-state-default .icon-print{
+	background-image:url("../img/icon-menu/print.png");
+}
+
+.ui-state-default .icon-excel{
+	background-image:url("../img/icon-menu/excel.png");
+}
+
+.ui-state-default .icon-pdf{
+	background-image:url("../img/icon-menu/pdf.png");
+}
+
+.ui-state-default .icon-key{
+	background-image:url("../img/icon-menu/key.png']}");
+}
+
+.ui-icon.admin{
+	background-image:url("../img/icon-menu/admin.png");
+}
+
+.ui-icon.perfil{
+	background-image:url("../img/icon-menu/perfil.png");
+}
+
+.ui-icon.admin_perfiles{
+	background-image:url("../img/icon-menu/perfil.png");
+}
+
+.ui-icon.usuarios{
+	background-image:url("../img/icon-menu/usuarios.png");
+}
+
+.ui-icon.empresa{
+	background-image:url("../img/icon-menu/empresa.png");
+}
+
+.ui-icon.caja{
+	background-image:url("../img/icon-menu/dollar.png");
+}
+
+.ui-icon.detalles{
+	background-image:url("../img/icon-menu/detalles.png");
+}
+
+.ui-icon.comprobante-pago{
+	background-image:url("../img/icon-menu/text.png");
+}
+.ui-icon.icon-detail{
+	background-image:url("../img/icon-menu/text.png");
+}
+
+.ui-icon.compras{
+/* 	background-image:url("../img/icon-menu/wallet.png"); */
+	background-image:url("../img/icon-menu/compras.png");
+}
+
+.ui-icon.emprendedor{
+	background-image:url("../img/icon-menu/emprendedor.png");
+}
+
+.ui-icon.profile{
+	background-image:url("../img/icon-menu/emprendedor.png");
+}
+
+.ui-icon.close{
+/* 	background-image:url("../img/icon-menu/turn_off.png"); */
+	background-image:url("../img/icon-menu/exit.png");
+ 	margin-right: 4px;
+}
+
+.ui-icon.close-windows{
+	background-image:url("../img/icon-menu/cancel.png");
+ 	margin-right: 4px;
+}
+
+.ui-state-default ui-icon-close{
+	background-image:url("../img/icon-menu/create.png");
+}
+
+
+
+/* 
+
+.ui-state-default .icon-add{
+	background-image: url("#{resource['img/icon-menu/create.png']}");
+}
+
+.ui-state-default .icon-find{
+	background-image:url("#{resource['img/icon-menu/find.png']}");
+}
+
+.ui-state-default .icon-detalles{
+	background-image:url("#{resource['img/icon-menu/detalles.png']}");
+}
+
+.ui-state-default .icon-edit{
+	background-image:url("#{resource['img/icon-menu/update.png']}");
+}
+
+.ui-state-default .icon-delete{
+	background-image:url("#{resource['img/icon-menu/trash.png']}");
+}
+
+.ui-state-default .icon-save{
+	background-image:url("#{resource['img/icon-menu/save.png']}");
+}
+.ui-state-default .icon-clear{
+	background-image:url("#{resource['img/icon-menu/clear.png']}");
+}
+
+.ui-state-default .icon-cancel{
+	background-image:url("#{resource['img/icon-menu/cancel.png']}");
+}
+
+.ui-state-default .icon-print{
+	background-image:url("#{resource['img/icon-menu/print.png']}");
+}
+
+.ui-state-default .icon-excel{
+	background-image:url("#{resource['img/icon-menu/excel.png']}");
+}
+
+.ui-state-default .icon-pdf{
+	background-image:url("#{resource['img/icon-menu/pdf.png']}");
+}
+
+.ui-state-default .icon-key{
+	background-image:url("#{resource['img/icon-menu/key.png']}']}");
+}
+
+.ui-icon.admin{
+	background-image:url("#{resource['img/icon-menu/admin.png']}");
+}
+
+.ui-icon.perfil{
+	background-image:url("#{resource['img/icon-menu/perfil.png']}");
+}
+
+.ui-icon.usuarios{
+	background-image:url("#{resource['img/icon-menu/usuarios.png']}");
+}
+
+.ui-icon.empresa{
+	background-image:url("#{resource['img/icon-menu/empresa.png']}");
+}
+
+.ui-icon.caja{
+	background-image:url("#{resource['img/icon-menu/dollar.png']}");
+}
+
+.ui-icon.detalles{
+	background-image:url("#{resource['img/icon-menu/detalles.png']}");
+}
+
+.ui-icon.comprobante-pago{
+	background-image:url("#{resource['img/icon-menu/text.png']}");
+}
+
+.ui-icon.compras{
+	background-image:url("#{resource['img/icon-menu/compras.png']}");
+}
+
+.ui-icon.emprendedor{
+	background-image:url("#{resource['img/icon-menu/emprendedor.png']}");
+}
+
+.ui-icon.profile{
+	background-image:url("#{resource['img/icon-menu/emprendedor.png']}");
+}
+
+.ui-icon.close{
+	background-image:url("#{resource['img/icon-menu/exit.png']}");
+ 	margin-right: 4px;
+}
+
+.ui-state-default ui-icon-close{
+	background-image:url("#{resource['img/icon-menu/create.png']}");
+}
+
+*/

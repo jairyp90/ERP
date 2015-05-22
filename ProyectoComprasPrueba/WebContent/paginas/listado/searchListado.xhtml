@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListListado" >
+      <p:growl id="msgListado" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Listado" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Listado" actionListener="#{listadoBean.cargarDatosMaestros}" oncomplete="carDialogNewListado.show()" icon="icon-add" update=":formNewListado" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoListado" fileName="ListadoExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoListado" fileName="ListadoPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoListado" var="dto" value="#{listadoBean.listaListado}" rowKey="#{dto.}" selection="#{listadoBean.listado}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Listado Disponible" >
+        <p:ajax event="rowSelect" listener="#{listadoBean.onRowSelect}" />
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="idlistado" />
+          </f:facet>
+          <h:outputText value="#{dto.in_idlistado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="codlistado" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_codlistado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="deslistado" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_deslistado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="ref1listado" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_ref1listado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="ref2listado" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_ref2listado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="ref3listado" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_ref3listado}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usumodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecmodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailListado:carDialogDetailListado" oncomplete="if(!args.validationFailed)carDialogDetailListado.show()" actionListener="#{listadoBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdateListado:carDialogUpdateListado" oncomplete="if(!args.validationFailed)carDialogUpdateListado.show()" actionListener="#{listadoBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeleteListado:confirmDeleteListado" oncomplete="if(!args.validationFailed)confirmDeleteListado.show()" actionListener="#{listadoBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaListado" >
+      <ui:include src="/paginas/listado/addListado.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarListado" >
+      <ui:include src="/paginas/listado/updateListado.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetalleListado" >
+      <ui:include src="/paginas/listado/detailListado.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarListado" >
+      <ui:include src="/paginas/listado/deleteListado.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

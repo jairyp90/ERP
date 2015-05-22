@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TDetallesolicitudMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TDetallesolicitud" >
+    <id column="in_iddetsolicitud" property="in_iddetsolicitud" jdbcType="INTEGER" />
+    <result column="vc_artidetsolicitud" property="vc_artidetsolicitud" jdbcType="VARCHAR" />
+    <result column="in_cantdetsolicitud" property="in_cantdetsolicitud" jdbcType="INTEGER" />
+    <result column="vc_obsdetsolicitud" property="vc_obsdetsolicitud" jdbcType="VARCHAR" />
+    <result column="vc_provdetsolicitud" property="vc_provdetsolicitud" jdbcType="VARCHAR" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_iddetsolicitud, vc_artidetsolicitud, in_cantdetsolicitud, vc_obsdetsolicitud, 
+    vc_provdetsolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+    bt_habilitado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from dbo.t_detallesolicitud
+    where in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    select in_iddetsolicitud, vc_artidetsolicitud, in_cantdetsolicitud, vc_obsdetsolicitud, 
+    vc_provdetsolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+    bt_habilitado
+    from t_detallesolicitud where 1 = 1 
+    <if test="in_iddetsolicitud != null" >
+        and in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_artidetsolicitud != null and vc_artidetsolicitud != ''" >
+        and vc_artidetsolicitud = #{vc_artidetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="in_cantdetsolicitud != null" >
+        and in_cantdetsolicitud = #{in_cantdetsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_obsdetsolicitud != null and vc_obsdetsolicitud != ''" >
+        and vc_obsdetsolicitud = #{vc_obsdetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_provdetsolicitud != null and vc_provdetsolicitud != ''" >
+        and vc_provdetsolicitud = #{vc_provdetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    select in_iddetsolicitud, vc_artidetsolicitud, in_cantdetsolicitud, vc_obsdetsolicitud, 
+    vc_provdetsolicitud, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+    bt_habilitado
+    from t_detallesolicitud where 1 = 1 
+    <if test="in_iddetsolicitud != null" >
+        and in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_artidetsolicitud != null and vc_artidetsolicitud != ''" >
+        and vc_artidetsolicitud = #{vc_artidetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="in_cantdetsolicitud != null" >
+        and in_cantdetsolicitud = #{in_cantdetsolicitud,jdbcType=INTEGER}
+    </if>
+    <if test="vc_obsdetsolicitud != null and vc_obsdetsolicitud != ''" >
+        and vc_obsdetsolicitud = #{vc_obsdetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_provdetsolicitud != null and vc_provdetsolicitud != ''" >
+        and vc_provdetsolicitud = #{vc_provdetsolicitud,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_detallesolicitud
+    where in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    insert into t_detallesolicitud (in_iddetsolicitud, vc_artidetsolicitud, 
+      in_cantdetsolicitud, vc_obsdetsolicitud, 
+      vc_provdetsolicitud, vc_usuingresa, dt_fecingresa, 
+      vc_usumodifica, dt_fecmodifica, bt_habilitado
+      )
+    values (#{in_iddetsolicitud,jdbcType=INTEGER}, #{vc_artidetsolicitud,jdbcType=VARCHAR}, 
+      #{in_cantdetsolicitud,jdbcType=INTEGER}, #{vc_obsdetsolicitud,jdbcType=VARCHAR}, 
+      #{vc_provdetsolicitud,jdbcType=VARCHAR}, #{vc_usuingresa,jdbcType=VARCHAR}, #{dt_fecingresa,jdbcType=TIMESTAMP}, 
+      #{vc_usumodifica,jdbcType=VARCHAR}, #{dt_fecmodifica,jdbcType=TIMESTAMP}, #{bt_habilitado,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    insert into t_detallesolicitud
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_iddetsolicitud != null" >
+        in_iddetsolicitud,
+      </if>
+      <if test="vc_artidetsolicitud != null" >
+        vc_artidetsolicitud,
+      </if>
+      <if test="in_cantdetsolicitud != null" >
+        in_cantdetsolicitud,
+      </if>
+      <if test="vc_obsdetsolicitud != null" >
+        vc_obsdetsolicitud,
+      </if>
+      <if test="vc_provdetsolicitud != null" >
+        vc_provdetsolicitud,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_iddetsolicitud != null" >
+        #{in_iddetsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_artidetsolicitud != null" >
+        #{vc_artidetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="in_cantdetsolicitud != null" >
+        #{in_cantdetsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_obsdetsolicitud != null" >
+        #{vc_obsdetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_provdetsolicitud != null" >
+        #{vc_provdetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_iddetsolicitud" order="AFTER" >
+      SELECT @@IDENTITY as in_iddetsolicitud;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    update t_detallesolicitud
+    <set >
+      <if test="vc_artidetsolicitud != null" >
+        vc_artidetsolicitud = #{vc_artidetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="in_cantdetsolicitud != null" >
+        in_cantdetsolicitud = #{in_cantdetsolicitud,jdbcType=INTEGER},
+      </if>
+      <if test="vc_obsdetsolicitud != null" >
+        vc_obsdetsolicitud = #{vc_obsdetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_provdetsolicitud != null" >
+        vc_provdetsolicitud = #{vc_provdetsolicitud,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TDetallesolicitud" >
+    update t_detallesolicitud
+    set vc_artidetsolicitud = #{vc_artidetsolicitud,jdbcType=VARCHAR},
+      in_cantdetsolicitud = #{in_cantdetsolicitud,jdbcType=INTEGER},
+      vc_obsdetsolicitud = #{vc_obsdetsolicitud,jdbcType=VARCHAR},
+      vc_provdetsolicitud = #{vc_provdetsolicitud,jdbcType=VARCHAR},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_iddetsolicitud = #{in_iddetsolicitud,jdbcType=INTEGER}
+  </update>
+</mapper>

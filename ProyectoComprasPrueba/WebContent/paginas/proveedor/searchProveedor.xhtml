@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="../../plantillas/plantilla.xhtml" >
+  <ui:define name="body" >
+    <h:form id="formListProveedor" >
+      <p:growl id="msgProveedor" showDetail="true" life="4800" />
+      <center >
+        <h:outputLabel value="Listado de Proveedor" styleClass="tittle_page" />
+      </center>
+      <div style="width: 100%;" >
+        <table style="width: 100%;" >
+          <tr >
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: left;" >
+                <p:commandButton value="Nuevo(a) Proveedor" actionListener="#{proveedorBean.cargarDatosMaestros}" oncomplete="carDialogNewProveedor.show()" icon="icon-add" update=":formNewProveedor" />
+              </div>
+            </td>
+            <td style="width: 50%;" >
+              <div style="width: 100%; text-align: right;" >
+                <p:commandLink title="Imprimir" onclick="window.print();" >
+                  <p:graphicImage value="/resources/img/print.png" />
+                </p:commandLink>
+                <p:commandLink title="Exportar excel" ajax="false" >
+                  <p:graphicImage value="/resources/img/excel.png" />
+                  <p:dataExporter type="xls" target="tablaListadoProveedor" fileName="ProveedorExcel" />
+                </p:commandLink>
+                <p:commandLink title="Exportar pdf" ajax="false" >
+                  <p:graphicImage value="/resources/img/pdf.png" />
+                  <p:dataExporter type="pdf" target="tablaListadoProveedor" fileName="ProveedorPDF" />
+                </p:commandLink>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <p:dataTable id="tablaListadoProveedor" var="dto" value="#{proveedorBean.listaProveedor}" rowKey="#{dto.in_idproveedor}" selection="#{proveedorBean.proveedor}" selectionMode="single" paginator="true" paginatorPosition="bottom" rows="10" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15,20,40" emptyMessage="No hay ningun(a) Proveedor Disponible" >
+        <p:ajax event="rowSelect" listener="#{proveedorBean.onRowSelect}" />
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="nomproveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_nomproveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="rucproveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_rucproveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="dirproveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_dirproveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="tel1proveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_tel1proveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="tel2proveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_tel2proveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="corrproveedor" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_corrproveedor}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usuingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usuingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecingresa" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecingresa}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="usumodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.vc_usumodifica}" />
+        </p:column>
+        <p:column >
+          <f:facet name="header" >
+            <h:outputText value="fecmodifica" />
+          </f:facet>
+          <h:outputText value="#{dto.dt_fecmodifica}" />
+        </p:column>
+      </p:dataTable>
+      <br />
+      <center >
+        <p:commandButton title="Ver" update=":formDetailProveedor:carDialogDetailProveedor" oncomplete="if(!args.validationFailed)carDialogDetailProveedor.show()" actionListener="#{proveedorBean.cargarDatos()}" icon="icon-detail" value="Ver Detalle" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Actualizar" update=":formUpdateProveedor:carDialogUpdateProveedor" oncomplete="if(!args.validationFailed)carDialogUpdateProveedor.show()" actionListener="#{proveedorBean.cargarDatos()}" icon="icon-update" value="Actualizar" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Eliminar" update=":formDeleteProveedor:confirmDeleteProveedor" oncomplete="if(!args.validationFailed)confirmDeleteProveedor.show()" actionListener="#{proveedorBean.cargarDatos()}" icon="icon-delete" value="Eliminar" />
+      </center>
+    </h:form>
+    <ui:insert name="popupNuevaProveedor" >
+      <ui:include src="/paginas/proveedor/addProveedor.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupActualizarProveedor" >
+      <ui:include src="/paginas/proveedor/updateProveedor.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupDetalleProveedor" >
+      <ui:include src="/paginas/proveedor/detailProveedor.xhtml" />
+    </ui:insert>
+    <ui:insert name="popupEliminarProveedor" >
+      <ui:include src="/paginas/proveedor/deleteProveedor.xhtml" />
+    </ui:insert>
+  </ui:define>
+</ui:composition>

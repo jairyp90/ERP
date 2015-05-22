@@ -1,0 +1,124 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../plantillas/plantilla.xhtml">
+	
+    <ui:define name="head" >
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<title>Representaciones Tecnimotors</title>
+        <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+    </ui:define>
+	<ui:define name="header"/>
+	<ui:define name="menu"/>
+	<ui:define name="body">
+	
+	<div style="position: absolute; top:50%; left:35%; width:1050px; margin-left:-150px; height:220px; margin-top:-150px;" >
+		<div style="position: fixed;">
+		    <p:imageSwitch effect="fade" slideshowSpeed="5000">
+						<p:graphicImage value="/resources/img/galeria/tecnimotors.jpg"
+							title="Imagen" height="280" width="340" />
+						<p:graphicImage value="/resources/img/galeria/tecnimotors.jpg"
+							title="Imagen" height="280" width="340" />
+
+						<p:graphicImage value="/resources/img/galeria/tecnimotors.jpg"
+							title="Imagen" height="280" width="340" />
+						<p:graphicImage value="/resources/img/galeria/tecnimotors.jpg"
+							title="Imagen" height="280" width="340" />
+						</p:imageSwitch>
+			</div>	
+		   <p:panel id="panel_principal" styleClass="panel_centrado">
+<!--		    <p:panel id="panel_cabecera" styleClass="panel_pad">
+ 				<p:outputLabel style="font-size: 29px; position:relative;" ><center>Mobile and web Solutions</center></p:outputLabel>
+				
+				<br/>
+				<p:outputLabel style="font-size: 15px;">
+				</p:outputLabel>
+ 
+		    </p:panel>
+-->	
+		    <br/>
+		    
+						
+		    <h:panelGrid id="pgcontenido" columns="1" border="0" style="width:200px; height:200px" styleClass="texto-in-panel"  >
+			
+								
+						<h:form id="formLogin">		  		
+							<p:growl id="growlLogin" sticky="false" life="1000" showDetail="true" />
+						   <!--   <p:panel id="panel" style="width:320px; position:center; top:0%; margin-top:20px; margin-left:0px;" styleClass="texto-in-panel" >
+						    -->
+						    <h:panelGrid id="pgimagen" columns="2" border="0" style="width:300px; height:80px" styleClass="texto-in-panel">
+				<!--  	    
+						    <p:imageSwitch effect="fade">
+							<p:graphicImage value="/resources/img/galeria/tecnimotors.jpg"
+							title="Imagen" height="60" width="100" />
+							</p:imageSwitch>	-->							  					
+						   <p:column  style="width:60%;">
+				   			<h:outputLabel value="Sistema de Compras" styleClass="title_cabecera" /> 
+    						</p:column>    			
+						    </h:panelGrid>
+						    <br/>
+						    
+						        <h:panelGrid id="panel" columns="1" border="0" styleClass="texto-in-panel">
+						            <h:outputText for="usuario" value="Usuario:"/>
+						            <p:inputText id="usuario" required="true" value="#{loginBean.usuario.vc_usuario}"
+						            	requiredMessage="Digite correctamente el Usuario"
+										validatorMessage="Usuario no Existe"
+										maxlength="25" >
+						            	 
+						            	<f:validateLength minimum="5" maximum="70" />
+								<!--  	<f:validateRegex
+											pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+						            	-->	
+						            </p:inputText>
+						            <p:watermark for="usuario" value="Ingrese Usuario" /> 
+									<br/>
+						            <h:outputText value="Constraseña: " />
+						            <p:password type="" id="clave" value="#{loginBean.usuario.vc_contrasena}" required="true"
+						            	requiredMessage="Digite correctamente la contraseña" maxlength="16" >
+						            	<f:validateLength minimum="4" maximum="16" />
+						            </p:password>
+						            <p:watermark for="clave" value="Ingrese Contraseña" /> 
+						        </h:panelGrid>
+						        <p:messages id="msgs"/>
+								<br/>
+						        <p:commandButton id="loginButton" style="background: #005FAA; color: #FFFFFF;" value="Iniciar Sesión" update="panel, growlLogin" 
+						         	action="#{loginBean.login}" icon="icon-key"/>
+						  <!-- </p:panel> -->  
+						</h:form>
+						<table style="width:100%;">
+						<tr>
+						<td style="width:50%; text-align:right;" >
+							<a target="_blank" style="color: #68635D; font-size:10px" href="http://www.tecnimotors.com" class="footer_derecho">by Representaciones Tecnimotors</a>
+						</td>
+					</tr>
+				</table>
+					  	<div>
+							<p:gmap id="mapId" center="#{mapBean.latitud},#{mapBean.longitud}" zoom="#{mapBean.zoom}" type="terrain" navigationControl="false"
+								style="width:1px; height:1px; border-style: none;" model="#{mapBean.simpleModel}" >
+							</p:gmap>						
+						</div>
+					
+		    </h:panelGrid>
+		
+		<!--  	<p:panel>
+				<table style="width:100%;">
+					<tr>
+						<td style="width:50%; text-align:left;" class="footer_izquierdo" >
+							Copyright ®  2014 Reservados todos los derechos
+						</td>
+						<td style="width:50%; text-align:right;" >
+							<a target="_blank" href="http://www.cbg.pe" class="footer_derecho">by CBG TI SOLUTIONS</a>
+						</td>
+					</tr>
+				</table>
+			</p:panel>
+			--> 	    		
+	    </p:panel>
+	    </div>
+	    
+	</ui:define>
+ 	<ui:define name="footer"/>
+</ui:composition>

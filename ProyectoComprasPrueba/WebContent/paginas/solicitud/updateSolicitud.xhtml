@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formUpdateSolicitud" >
+    <p:dialog id="carDialogUpdateSolicitud" header="Actualizar Solicitud" widgetVar="carDialogUpdateSolicitud" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgActualizaSolicitud" cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Solicitud" >
+          <h:panelGrid cellspacing="4" columns="2" >
+            <p:outputLabel value="Nomsolicitud :" for="txtNomsolicitud" />
+            <p:inputText id="txtNomsolicitud" value="#{solicitudBean.solicitud.vc_nomsolicitud}" required="true" requiredMessage="Ingrese nomsolicitud" />
+            <p:outputLabel value="Motsolicitud :" for="txtMotsolicitud" />
+            <p:inputText id="txtMotsolicitud" value="#{solicitudBean.solicitud.vc_motsolicitud}" required="true" requiredMessage="Ingrese motsolicitud" />
+            <p:outputLabel value="Idlocsolicitud :" for="txtIdlocsolicitud" />
+            <p:inputText id="txtIdlocsolicitud" value="#{solicitudBean.solicitud.in_idlocsolicitud}" required="true" requiredMessage="Ingrese idlocsolicitud" />
+            <p:outputLabel value="Deslocsolicitud :" for="txtDeslocsolicitud" />
+            <p:inputText id="txtDeslocsolicitud" value="#{solicitudBean.solicitud.vc_deslocsolicitud}" required="true" requiredMessage="Ingrese deslocsolicitud" />
+            <p:outputLabel value="Plazsolicitud :" for="txtPlazsolicitud" />
+            <p:inputText id="txtPlazsolicitud" value="#{solicitudBean.solicitud.vc_plazsolicitud}" required="true" requiredMessage="Ingrese plazsolicitud" />
+            <p:outputLabel value="Obssolicitud :" for="txtObssolicitud" />
+            <p:inputText id="txtObssolicitud" value="#{solicitudBean.solicitud.vc_obssolicitud}" required="true" requiredMessage="Ingrese obssolicitud" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{solicitudBean.solicitud.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{solicitudBean.solicitud.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{solicitudBean.solicitud.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{solicitudBean.solicitud.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Solicitud" value="Guardar" icon="icon-save" update=":formListSolicitud:msgSolicitud" oncomplete="if(!args.validationFailed)confirmUpdateSolicitud.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseSolicitudUpdate.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmUpdateSolicitud" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmUpdateSolicitud" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Actualizar el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmUpdateSolicitud,:formListSolicitud:tablaListadoSolicitud" oncomplete="confirmUpdateSolicitud.hide(),carDialogUpdateSolicitud.hide()" actionListener="#{solicitudBean.actualizarRegistroSolicitud}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmUpdateSolicitud" oncomplete="confirmUpdateSolicitud.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseSolicitudUpdate" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseSolicitudUpdate" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseSolicitudUpdate" oncomplete="confirmCloseSolicitudUpdate.hide(),carDialogUpdateSolicitud.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseSolicitudUpdate" oncomplete="confirmCloseSolicitudUpdate.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

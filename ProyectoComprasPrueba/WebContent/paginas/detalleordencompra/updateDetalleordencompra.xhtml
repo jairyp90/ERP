@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formUpdateDetalleordencompra" >
+    <p:dialog id="carDialogUpdateDetalleordencompra" header="Actualizar Detalleordencompra" widgetVar="carDialogUpdateDetalleordencompra" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgActualizaDetalleordencompra" cellpadding="0" cellspacing="2" width="100%" >
+        <p:panel header="Datos de Detalleordencompra" >
+          <h:panelGrid cellspacing="4" columns="2" >
+            <p:outputLabel value="Cantdetordcompra :" for="txtCantdetordcompra" />
+            <p:inputText id="txtCantdetordcompra" value="#{detalleordencompraBean.detalleordencompra.db_cantdetordcompra}" required="true" requiredMessage="Ingrese cantdetordcompra" />
+            <p:outputLabel value="Idunidetordcompra :" for="txtIdunidetordcompra" />
+            <p:inputText id="txtIdunidetordcompra" value="#{detalleordencompraBean.detalleordencompra.id_idunidetordcompra}" required="true" requiredMessage="Ingrese idunidetordcompra" />
+            <p:outputLabel value="Desunidetordcompra :" for="txtDesunidetordcompra" />
+            <p:inputText id="txtDesunidetordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desunidetordcompra}" required="true" requiredMessage="Ingrese desunidetordcompra" />
+            <p:outputLabel value="Desdetordcompra :" for="txtDesdetordcompra" />
+            <p:inputText id="txtDesdetordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desdetordcompra}" required="true" requiredMessage="Ingrese desdetordcompra" />
+            <p:outputLabel value="Desprecuordcompra :" for="txtDesprecuordcompra" />
+            <p:inputText id="txtDesprecuordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desprecuordcompra}" required="true" requiredMessage="Ingrese desprecuordcompra" />
+            <p:outputLabel value="Destotalordcompra :" for="txtDestotalordcompra" />
+            <p:inputText id="txtDestotalordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_destotalordcompra}" required="true" requiredMessage="Ingrese destotalordcompra" />
+            <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+            <p:inputText id="txtUsuingresa" value="#{detalleordencompraBean.detalleordencompra.vc_usuingresa}" required="true" requiredMessage="Ingrese usuingresa" />
+            <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+            <p:inputText id="txtFecingresa" value="#{detalleordencompraBean.detalleordencompra.dt_fecingresa}" required="true" requiredMessage="Ingrese fecingresa" />
+            <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+            <p:inputText id="txtUsumodifica" value="#{detalleordencompraBean.detalleordencompra.vc_usumodifica}" required="true" requiredMessage="Ingrese usumodifica" />
+            <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+            <p:inputText id="txtFecmodifica" value="#{detalleordencompraBean.detalleordencompra.dt_fecmodifica}" required="true" requiredMessage="Ingrese fecmodifica" />
+          </h:panelGrid>
+        </p:panel>
+      </h:panelGrid>
+      <br />
+      <center >
+        <p:commandButton title="Guardar Nuevo(a) Detalleordencompra" value="Guardar" icon="icon-save" update=":formListDetalleordencompra:msgDetalleordencompra" oncomplete="if(!args.validationFailed)confirmUpdateDetalleordencompra.show()" />
+        <p:commandButton title="Cerrar Ventana" process="@this" value="Cerrar" icon="icon-cancel" oncomplete="confirmCloseDetalleordencompraUpdate.show()" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmUpdateDetalleordencompra" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmUpdateDetalleordencompra" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Actualizar el Registro?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="confirmUpdateDetalleordencompra,:formListDetalleordencompra:tablaListadoDetalleordencompra" oncomplete="confirmUpdateDetalleordencompra.hide(),carDialogUpdateDetalleordencompra.hide()" actionListener="#{detalleordencompraBean.actualizarRegistroDetalleordencompra}" process="@this" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="confirmUpdateDetalleordencompra" oncomplete="confirmUpdateDetalleordencompra.hide()" />
+    </p:confirmDialog>
+    <p:confirmDialog id="confirmCloseDetalleordencompraUpdate" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseDetalleordencompraUpdate" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseDetalleordencompraUpdate" oncomplete="confirmCloseDetalleordencompraUpdate.hide(),carDialogUpdateDetalleordencompra.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseDetalleordencompraUpdate" oncomplete="confirmCloseDetalleordencompraUpdate.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

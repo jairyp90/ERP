@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<h:form>
+			<p:menubar autoDisplay="false" styleClass="cabecera">
+				<p:submenu label="&nbsp;Administraci&oacute;n" icon="admin">
+					<p:menuitem value="&nbsp;Organizaci&oacute;n" action="#{organizacionBean.ListarOrganizaciones}"
+						icon="empresa"/>
+
+					<p:menuitem value="&nbsp;Usuarios" action="#{personaBean.ListarPersonas}"
+					    icon="usuarios" />
+
+					<p:submenu label="&nbsp;Maestros" icon="admin_perfiles">
+						<p:menuitem value="&nbsp;Articulo" action="#{articuloBean.ListarArticulos}" />
+						<p:menuitem value="&nbsp;Proveedores" action="#{proveedorBean.ListarProveedores}" />
+						<p:menuitem value="&nbsp;Locales" action="#{permisoxperfilBean.ListarPerfilHasTPermisos}" />
+						<p:menuitem value="&nbsp;Areas" action="#{permisoxperfilBean.ListarPerfilHasTPermisos}" />
+						<p:menuitem value="&nbsp;Cargos" action="#{permisoxperfilBean.ListarPerfilHasTPermisos}" />
+					</p:submenu>
+					
+					<p:submenu label="&nbsp;Zonificación " icon="admin_perfiles">
+						<p:menuitem value="&nbsp;Distrito" action="#{distritoBean.ListarDistritos}" />
+						<p:menuitem value="&nbsp;Zona" action="#{zonaBean.ListarZonas}" />
+						<p:menuitem value="&nbsp;Tarifario" action="#{tarifaBean.ListarTarifas}" />
+					</p:submenu>
+					
+				</p:submenu>
+					
+					<p:submenu label="&nbsp;Panel de Control" icon="admin_perfiles">
+		            	<p:menuitem value="&nbsp;Localización" action="#{mapBean.ListaPanelControl}" process="@parent:@parent" icon="empresa" />
+					</p:submenu>										
+								
+					<p:submenu label="&nbsp;Reportes" icon="admin_perfiles">
+						<p:menuitem value="&nbsp;Calificación al taxista" action="#{serviciotaxiBean.ListarServiciotaxis}"/>
+						<p:menuitem value="&nbsp;Pedidos por Día/Mes" action="#{serviciotaxiBean.ListarPedidoDiaMes}"/>
+						<p:menuitem value="&nbsp;Ranking de Taxistas" action="#{serviciotaxiBean.ListarRankingTaxista}"/>
+						<p:menuitem value="&nbsp;Servicios 2 últimas horas"/>
+						<p:menuitem value="&nbsp;Localización" />						
+					</p:submenu>										
+				
+
+
+				<f:facet name="options">
+					<p:commandButton value="&nbsp;Salir" action="#{loginBean.logout}" icon="close" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>

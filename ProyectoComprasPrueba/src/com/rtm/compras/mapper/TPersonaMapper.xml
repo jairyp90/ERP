@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TPersonaMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TPersona" >
+    <id column="in_idpersona" property="in_idpersona" jdbcType="INTEGER" />
+    <result column="vc_patpersona" property="vc_patpersona" jdbcType="VARCHAR" />
+    <result column="vc_matpersona" property="vc_matpersona" jdbcType="VARCHAR" />
+    <result column="vc_nompersona" property="vc_nompersona" jdbcType="VARCHAR" />
+    <result column="vc_telpersona" property="vc_telpersona" jdbcType="VARCHAR" />
+    <result column="vc_correopersona" property="vc_correopersona" jdbcType="VARCHAR" />
+    <result column="vc_usuario" property="vc_usuario" jdbcType="VARCHAR" />
+    <result column="vc_contrasena" property="vc_contrasena" jdbcType="VARCHAR" />
+    <result column="in_areapersona" property="in_areapersona" jdbcType="INTEGER" />
+    <result column="vc_areapersona" property="vc_areapersona" jdbcType="VARCHAR" />
+    <result column="in_cargopersona" property="in_cargopersona" jdbcType="INTEGER" />
+    <result column="vc_cargopersona" property="vc_cargopersona" jdbcType="VARCHAR" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_diferent" property="bt_diferent" jdbcType="TINYINT" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_idpersona, vc_patpersona, vc_matpersona, vc_nompersona, vc_telpersona, vc_correopersona, 
+    vc_usuario, vc_contrasena, in_areapersona, vc_areapersona, in_cargopersona, vc_cargopersona, 
+    vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_diferent, bt_habilitado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_persona
+    where in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TPersona" >
+    select in_idpersona, vc_patpersona, vc_matpersona, vc_nompersona, vc_telpersona, 
+    vc_correopersona, vc_usuario, vc_contrasena, in_areapersona, vc_areapersona, in_cargopersona, 
+    vc_cargopersona, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_diferent, 
+    bt_habilitado
+    from t_persona where 1 = 1 
+    <if test="in_idpersona != null" >
+        and in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_patpersona != null and vc_patpersona != ''" >
+        and vc_patpersona = #{vc_patpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_matpersona != null and vc_matpersona != ''" >
+        and vc_matpersona = #{vc_matpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_nompersona != null and vc_nompersona != ''" >
+        and vc_nompersona = #{vc_nompersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_telpersona != null and vc_telpersona != ''" >
+        and vc_telpersona = #{vc_telpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_correopersona != null and vc_correopersona != ''" >
+        and vc_correopersona = #{vc_correopersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuario != null and vc_usuario != ''" >
+        and vc_usuario = #{vc_usuario,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_contrasena != null and vc_contrasena != ''" >
+        and vc_contrasena = #{vc_contrasena,jdbcType=VARCHAR}
+    </if>
+    <if test="in_areapersona != null" >
+        and in_areapersona = #{in_areapersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_areapersona != null and vc_areapersona != ''" >
+        and vc_areapersona = #{vc_areapersona,jdbcType=VARCHAR}
+    </if>
+    <if test="in_cargopersona != null" >
+        and in_cargopersona = #{in_cargopersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_cargopersona != null and vc_cargopersona != ''" >
+        and vc_cargopersona = #{vc_cargopersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_diferent != null" >
+        and bt_diferent = #{bt_diferent,jdbcType=TINYINT}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TPersona" >
+    select in_idpersona, vc_patpersona, vc_matpersona, vc_nompersona, vc_telpersona, 
+    vc_correopersona, vc_usuario, vc_contrasena, in_areapersona, vc_areapersona, in_cargopersona, 
+    vc_cargopersona, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, bt_diferent, 
+    bt_habilitado
+    from t_persona where 1 = 1 
+    <if test="in_idpersona != null" >
+        and in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_patpersona != null and vc_patpersona != ''" >
+        and vc_patpersona = #{vc_patpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_matpersona != null and vc_matpersona != ''" >
+        and vc_matpersona = #{vc_matpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_nompersona != null and vc_nompersona != ''" >
+        and vc_nompersona = #{vc_nompersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_telpersona != null and vc_telpersona != ''" >
+        and vc_telpersona = #{vc_telpersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_correopersona != null and vc_correopersona != ''" >
+        and vc_correopersona = #{vc_correopersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuario != null and vc_usuario != ''" >
+        and vc_usuario = #{vc_usuario,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_contrasena != null and vc_contrasena != ''" >
+        and vc_contrasena = #{vc_contrasena,jdbcType=VARCHAR}
+    </if>
+    <if test="in_areapersona != null" >
+        and in_areapersona = #{in_areapersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_areapersona != null and vc_areapersona != ''" >
+        and vc_areapersona = #{vc_areapersona,jdbcType=VARCHAR}
+    </if>
+    <if test="in_cargopersona != null" >
+        and in_cargopersona = #{in_cargopersona,jdbcType=INTEGER}
+    </if>
+    <if test="vc_cargopersona != null and vc_cargopersona != ''" >
+        and vc_cargopersona = #{vc_cargopersona,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_diferent != null" >
+        and bt_diferent = #{bt_diferent,jdbcType=TINYINT}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_persona
+    where in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TPersona" >
+    insert into t_persona (in_idpersona, vc_patpersona, vc_matpersona, 
+      vc_nompersona, vc_telpersona, vc_correopersona, 
+      vc_usuario, vc_contrasena, in_areapersona, 
+      vc_areapersona, in_cargopersona, vc_cargopersona, 
+      vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+      dt_fecmodifica, bt_diferent, bt_habilitado
+      )
+    values (#{in_idpersona,jdbcType=INTEGER}, #{vc_patpersona,jdbcType=VARCHAR}, #{vc_matpersona,jdbcType=VARCHAR}, 
+      #{vc_nompersona,jdbcType=VARCHAR}, #{vc_telpersona,jdbcType=VARCHAR}, #{vc_correopersona,jdbcType=VARCHAR}, 
+      #{vc_usuario,jdbcType=VARCHAR}, #{vc_contrasena,jdbcType=VARCHAR}, #{in_areapersona,jdbcType=INTEGER}, 
+      #{vc_areapersona,jdbcType=VARCHAR}, #{in_cargopersona,jdbcType=INTEGER}, #{vc_cargopersona,jdbcType=VARCHAR}, 
+      #{vc_usuingresa,jdbcType=VARCHAR}, #{dt_fecingresa,jdbcType=TIMESTAMP}, #{vc_usumodifica,jdbcType=VARCHAR}, 
+      #{dt_fecmodifica,jdbcType=TIMESTAMP}, #{bt_diferent,jdbcType=TINYINT}, #{bt_habilitado,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TPersona" >
+    insert into t_persona
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_idpersona != null" >
+        in_idpersona,
+      </if>
+      <if test="vc_patpersona != null" >
+        vc_patpersona,
+      </if>
+      <if test="vc_matpersona != null" >
+        vc_matpersona,
+      </if>
+      <if test="vc_nompersona != null" >
+        vc_nompersona,
+      </if>
+      <if test="vc_telpersona != null" >
+        vc_telpersona,
+      </if>
+      <if test="vc_correopersona != null" >
+        vc_correopersona,
+      </if>
+      <if test="vc_usuario != null" >
+        vc_usuario,
+      </if>
+      <if test="vc_contrasena != null" >
+        vc_contrasena,
+      </if>
+      <if test="in_areapersona != null" >
+        in_areapersona,
+      </if>
+      <if test="vc_areapersona != null" >
+        vc_areapersona,
+      </if>
+      <if test="in_cargopersona != null" >
+        in_cargopersona,
+      </if>
+      <if test="vc_cargopersona != null" >
+        vc_cargopersona,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_diferent != null" >
+        bt_diferent,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_idpersona != null" >
+        #{in_idpersona,jdbcType=INTEGER},
+      </if>
+      <if test="vc_patpersona != null" >
+        #{vc_patpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_matpersona != null" >
+        #{vc_matpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_nompersona != null" >
+        #{vc_nompersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_telpersona != null" >
+        #{vc_telpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_correopersona != null" >
+        #{vc_correopersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuario != null" >
+        #{vc_usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_contrasena != null" >
+        #{vc_contrasena,jdbcType=VARCHAR},
+      </if>
+      <if test="in_areapersona != null" >
+        #{in_areapersona,jdbcType=INTEGER},
+      </if>
+      <if test="vc_areapersona != null" >
+        #{vc_areapersona,jdbcType=VARCHAR},
+      </if>
+      <if test="in_cargopersona != null" >
+        #{in_cargopersona,jdbcType=INTEGER},
+      </if>
+      <if test="vc_cargopersona != null" >
+        #{vc_cargopersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_diferent != null" >
+        #{bt_diferent,jdbcType=TINYINT},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_idpersona" order="AFTER" >
+      SELECT @@IDENTITY as in_idpersona;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TPersona" >
+    update t_persona
+    <set >
+      <if test="vc_patpersona != null" >
+        vc_patpersona = #{vc_patpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_matpersona != null" >
+        vc_matpersona = #{vc_matpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_nompersona != null" >
+        vc_nompersona = #{vc_nompersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_telpersona != null" >
+        vc_telpersona = #{vc_telpersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_correopersona != null" >
+        vc_correopersona = #{vc_correopersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuario != null" >
+        vc_usuario = #{vc_usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_contrasena != null" >
+        vc_contrasena = #{vc_contrasena,jdbcType=VARCHAR},
+      </if>
+      <if test="in_areapersona != null" >
+        in_areapersona = #{in_areapersona,jdbcType=INTEGER},
+      </if>
+      <if test="vc_areapersona != null" >
+        vc_areapersona = #{vc_areapersona,jdbcType=VARCHAR},
+      </if>
+      <if test="in_cargopersona != null" >
+        in_cargopersona = #{in_cargopersona,jdbcType=INTEGER},
+      </if>
+      <if test="vc_cargopersona != null" >
+        vc_cargopersona = #{vc_cargopersona,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_diferent != null" >
+        bt_diferent = #{bt_diferent,jdbcType=TINYINT},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+    </set>
+    where in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TPersona" >
+    update t_persona
+    set vc_patpersona = #{vc_patpersona,jdbcType=VARCHAR},
+      vc_matpersona = #{vc_matpersona,jdbcType=VARCHAR},
+      vc_nompersona = #{vc_nompersona,jdbcType=VARCHAR},
+      vc_telpersona = #{vc_telpersona,jdbcType=VARCHAR},
+      vc_correopersona = #{vc_correopersona,jdbcType=VARCHAR},
+      vc_usuario = #{vc_usuario,jdbcType=VARCHAR},
+      vc_contrasena = #{vc_contrasena,jdbcType=VARCHAR},
+      in_areapersona = #{in_areapersona,jdbcType=INTEGER},
+      vc_areapersona = #{vc_areapersona,jdbcType=VARCHAR},
+      in_cargopersona = #{in_cargopersona,jdbcType=INTEGER},
+      vc_cargopersona = #{vc_cargopersona,jdbcType=VARCHAR},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_diferent = #{bt_diferent,jdbcType=TINYINT},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_idpersona = #{in_idpersona,jdbcType=INTEGER}
+  </update>
+</mapper>

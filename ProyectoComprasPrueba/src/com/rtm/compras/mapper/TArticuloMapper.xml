@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rtm.compras.mapper.TArticuloMapper" >
+  <resultMap id="BaseResultMap" type="com.rtm.compras.bean.TArticulo" >
+    <id column="in_idarticulo" property="in_idarticulo" jdbcType="INTEGER" />
+    <result column="vc_codarticulo" property="vc_codarticulo" jdbcType="VARCHAR" />
+    <result column="vc_desarticulo" property="vc_desarticulo" jdbcType="VARCHAR" />
+    <result column="vc_tiparticulo" property="vc_tiparticulo" jdbcType="VARCHAR" />
+    <result column="vc_mararticulo" property="vc_mararticulo" jdbcType="VARCHAR" />
+    <result column="vc_modarticulo" property="vc_modarticulo" jdbcType="VARCHAR" />
+    <result column="vc_medarticulo" property="vc_medarticulo" jdbcType="VARCHAR" />
+    <result column="vc_equarticulo" property="vc_equarticulo" jdbcType="VARCHAR" />
+    <result column="vc_usuingresa" property="vc_usuingresa" jdbcType="VARCHAR" />
+    <result column="dt_fecingresa" property="dt_fecingresa" jdbcType="TIMESTAMP" />
+    <result column="vc_usumodifica" property="vc_usumodifica" jdbcType="VARCHAR" />
+    <result column="dt_fecmodifica" property="dt_fecmodifica" jdbcType="TIMESTAMP" />
+    <result column="bt_habilitado" property="bt_habilitado" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.rtm.compras.bean.TArticulo" extends="BaseResultMap" >
+    <result column="by_imgarticulo" property="by_imgarticulo" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    in_idarticulo, vc_codarticulo, vc_desarticulo, vc_tiparticulo, vc_mararticulo, vc_modarticulo, 
+    vc_medarticulo, vc_equarticulo, vc_usuingresa, dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+    bt_habilitado
+  </sql>
+  <sql id="Blob_Column_List" >
+    by_imgarticulo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_articulo
+    where in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+  </select>
+  <select id="ObtenerRegistros" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TArticulo" >
+    select in_idarticulo, vc_codarticulo, vc_desarticulo, vc_tiparticulo, vc_mararticulo, 
+    vc_modarticulo, vc_medarticulo, vc_equarticulo, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado, by_imgarticulo
+    from t_articulo where 1 = 1 
+    <if test="in_idarticulo != null" >
+        and in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+    </if>
+    <if test="vc_codarticulo != null and vc_codarticulo != ''" >
+        and vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desarticulo != null and vc_desarticulo != ''" >
+        and vc_desarticulo = #{vc_desarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_tiparticulo != null and vc_tiparticulo != ''" >
+        and vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_mararticulo != null and vc_mararticulo != ''" >
+        and vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_modarticulo != null and vc_modarticulo != ''" >
+        and vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_medarticulo != null and vc_medarticulo != ''" >
+        and vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_equarticulo != null and vc_equarticulo != ''" >
+        and vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+    <if test="by_imgarticulo != null" >
+        and by_imgarticulo = #{by_imgarticulo,jdbcType=BINARY}
+    </if>
+  </select>
+   <select id="ObtenerRegistrosLike" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TArticulo" >
+    select in_idarticulo, vc_codarticulo, vc_desarticulo, vc_tiparticulo, vc_mararticulo, 
+    vc_modarticulo, vc_medarticulo, vc_equarticulo, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado, by_imgarticulo
+    from t_articulo where 1 = 1 
+    <if test="in_idarticulo != null" >
+        and in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+    </if>
+    <if test="vc_codarticulo != null and vc_codarticulo != ''" >
+        and vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desarticulo != null and vc_desarticulo != ''" >
+        and vc_desarticulo like CONCAT('%',#{vc_desarticulo,jdbcType=VARCHAR} ,'%')
+    </if>
+    <if test="vc_tiparticulo != null and vc_tiparticulo != ''" >
+        and vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_mararticulo != null and vc_mararticulo != ''" >
+        and vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_modarticulo != null and vc_modarticulo != ''" >
+        and vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_medarticulo != null and vc_medarticulo != ''" >
+        and vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_equarticulo != null and vc_equarticulo != ''" >
+        and vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+    <if test="by_imgarticulo != null" >
+        and by_imgarticulo = #{by_imgarticulo,jdbcType=BINARY}
+    </if>
+  </select>
+  
+  <select id="ObtenerUnRegistro" resultMap="BaseResultMap" parameterType="com.rtm.compras.bean.TArticulo" >
+    select in_idarticulo, vc_codarticulo, vc_desarticulo, vc_tiparticulo, vc_mararticulo, 
+    vc_modarticulo, vc_medarticulo, vc_equarticulo, vc_usuingresa, dt_fecingresa, vc_usumodifica, 
+    dt_fecmodifica, bt_habilitado, by_imgarticulo
+    from t_articulo where 1 = 1 
+    <if test="in_idarticulo != null" >
+        and in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+    </if>
+    <if test="vc_codarticulo != null and vc_codarticulo != ''" >
+        and vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_desarticulo != null and vc_desarticulo != ''" >
+        and vc_desarticulo = #{vc_desarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_tiparticulo != null and vc_tiparticulo != ''" >
+        and vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_mararticulo != null and vc_mararticulo != ''" >
+        and vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_modarticulo != null and vc_modarticulo != ''" >
+        and vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_medarticulo != null and vc_medarticulo != ''" >
+        and vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_equarticulo != null and vc_equarticulo != ''" >
+        and vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR}
+    </if>
+    <if test="vc_usuingresa != null and vc_usuingresa != ''" >
+        and vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecingresa != null" >
+        and dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP}
+    </if>
+    <if test="vc_usumodifica != null and vc_usumodifica != ''" >
+        and vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR}
+    </if>
+    <if test="dt_fecmodifica != null" >
+        and dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP}
+    </if>
+    <if test="bt_habilitado != null" >
+        and bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    </if>
+    <if test="by_imgarticulo != null" >
+        and by_imgarticulo = #{by_imgarticulo,jdbcType=BINARY}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_articulo
+    where in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rtm.compras.bean.TArticulo" >
+    insert into dbo.t_articulo (in_idarticulo, vc_codarticulo, vc_desarticulo, 
+      vc_tiparticulo, vc_mararticulo, vc_modarticulo, 
+      vc_medarticulo, vc_equarticulo, vc_usuingresa, 
+      dt_fecingresa, vc_usumodifica, dt_fecmodifica, 
+      bt_habilitado, by_imgarticulo)
+    values (#{in_idarticulo,jdbcType=INTEGER}, #{vc_codarticulo,jdbcType=VARCHAR}, #{vc_desarticulo,jdbcType=VARCHAR}, 
+      #{vc_tiparticulo,jdbcType=VARCHAR}, #{vc_mararticulo,jdbcType=VARCHAR}, #{vc_modarticulo,jdbcType=VARCHAR}, 
+      #{vc_medarticulo,jdbcType=VARCHAR}, #{vc_equarticulo,jdbcType=VARCHAR}, #{vc_usuingresa,jdbcType=VARCHAR}, 
+      #{dt_fecingresa,jdbcType=TIMESTAMP}, #{vc_usumodifica,jdbcType=VARCHAR}, #{dt_fecmodifica,jdbcType=TIMESTAMP}, 
+      #{bt_habilitado,jdbcType=TINYINT}, #{by_imgarticulo,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rtm.compras.bean.TArticulo" >
+    insert into t_articulo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="in_idarticulo != null" >
+        in_idarticulo,
+      </if>
+      <if test="vc_codarticulo != null" >
+        vc_codarticulo,
+      </if>
+      <if test="vc_desarticulo != null" >
+        vc_desarticulo,
+      </if>
+      <if test="vc_tiparticulo != null" >
+        vc_tiparticulo,
+      </if>
+      <if test="vc_mararticulo != null" >
+        vc_mararticulo,
+      </if>
+      <if test="vc_modarticulo != null" >
+        vc_modarticulo,
+      </if>
+      <if test="vc_medarticulo != null" >
+        vc_medarticulo,
+      </if>
+      <if test="vc_equarticulo != null" >
+        vc_equarticulo,
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa,
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa,
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica,
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica,
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado,
+      </if>
+      <if test="by_imgarticulo != null" >
+        by_imgarticulo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="in_idarticulo != null" >
+        #{in_idarticulo,jdbcType=INTEGER},
+      </if>
+      <if test="vc_codarticulo != null" >
+        #{vc_codarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desarticulo != null" >
+        #{vc_desarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_tiparticulo != null" >
+        #{vc_tiparticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_mararticulo != null" >
+        #{vc_mararticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_modarticulo != null" >
+        #{vc_modarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_medarticulo != null" >
+        #{vc_medarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_equarticulo != null" >
+        #{vc_equarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+      <if test="by_imgarticulo != null" >
+        #{by_imgarticulo,jdbcType=BINARY},
+      </if>
+    </trim>
+    <selectKey resultType="int" keyProperty="in_idarticulo" order="AFTER" >
+      SELECT @@IDENTITY as in_idarticulo;
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rtm.compras.bean.TArticulo" >
+    update t_articulo
+    <set >
+      <if test="vc_codarticulo != null" >
+        vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_desarticulo != null" >
+        vc_desarticulo = #{vc_desarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_tiparticulo != null" >
+        vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_mararticulo != null" >
+        vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_modarticulo != null" >
+        vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_medarticulo != null" >
+        vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_equarticulo != null" >
+        vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="vc_usuingresa != null" >
+        vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecingresa != null" >
+        dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vc_usumodifica != null" >
+        vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      </if>
+      <if test="dt_fecmodifica != null" >
+        dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bt_habilitado != null" >
+        bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      </if>
+      <if test="by_imgarticulo != null" >
+        by_imgarticulo = #{by_imgarticulo,jdbcType=BINARY},
+      </if>
+    </set>
+    where in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.rtm.compras.bean.TArticulo" >
+    update t_articulo
+    set vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR},
+      vc_desarticulo = #{vc_desarticulo,jdbcType=VARCHAR},
+      vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR},
+      vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR},
+      vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR},
+      vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR},
+      vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT},
+      by_imgarticulo = #{by_imgarticulo,jdbcType=BINARY}
+    where in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rtm.compras.bean.TArticulo" >
+    update t_articulo
+    set vc_codarticulo = #{vc_codarticulo,jdbcType=VARCHAR},
+      vc_desarticulo = #{vc_desarticulo,jdbcType=VARCHAR},
+      vc_tiparticulo = #{vc_tiparticulo,jdbcType=VARCHAR},
+      vc_mararticulo = #{vc_mararticulo,jdbcType=VARCHAR},
+      vc_modarticulo = #{vc_modarticulo,jdbcType=VARCHAR},
+      vc_medarticulo = #{vc_medarticulo,jdbcType=VARCHAR},
+      vc_equarticulo = #{vc_equarticulo,jdbcType=VARCHAR},
+      vc_usuingresa = #{vc_usuingresa,jdbcType=VARCHAR},
+      dt_fecingresa = #{dt_fecingresa,jdbcType=TIMESTAMP},
+      vc_usumodifica = #{vc_usumodifica,jdbcType=VARCHAR},
+      dt_fecmodifica = #{dt_fecmodifica,jdbcType=TIMESTAMP},
+      bt_habilitado = #{bt_habilitado,jdbcType=TINYINT}
+    where in_idarticulo = #{in_idarticulo,jdbcType=INTEGER}
+  </update>
+</mapper>

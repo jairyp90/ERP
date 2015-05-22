@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDetailSolicitud" >
+    <p:dialog id="carDialogDetailSolicitud" header="Detalle Solicitud" widgetVar="carDialogDetailSolicitud" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgDetalleSolicitud" cellpadding="0" cellspacing="2" width="100%" />
+      <p:panel header="Datos de Solicitud" >
+        <h:panelGrid cellspacing="4" columns="2" >
+          <p:outputLabel value="Nomsolicitud :" for="txtNomsolicitud" />
+          <p:outputLabel id="txtNomsolicitud" value="#{solicitudBean.solicitud.vc_nomsolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Motsolicitud :" for="txtMotsolicitud" />
+          <p:outputLabel id="txtMotsolicitud" value="#{solicitudBean.solicitud.vc_motsolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Idlocsolicitud :" for="txtIdlocsolicitud" />
+          <p:outputLabel id="txtIdlocsolicitud" value="#{solicitudBean.solicitud.in_idlocsolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Deslocsolicitud :" for="txtDeslocsolicitud" />
+          <p:outputLabel id="txtDeslocsolicitud" value="#{solicitudBean.solicitud.vc_deslocsolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Plazsolicitud :" for="txtPlazsolicitud" />
+          <p:outputLabel id="txtPlazsolicitud" value="#{solicitudBean.solicitud.vc_plazsolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Obssolicitud :" for="txtObssolicitud" />
+          <p:outputLabel id="txtObssolicitud" value="#{solicitudBean.solicitud.vc_obssolicitud}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+          <p:outputLabel id="txtUsuingresa" value="#{solicitudBean.solicitud.vc_usuingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+          <p:outputLabel id="txtFecingresa" value="#{solicitudBean.solicitud.dt_fecingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+          <p:outputLabel id="txtUsumodifica" value="#{solicitudBean.solicitud.vc_usumodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+          <p:outputLabel id="txtFecmodifica" value="#{solicitudBean.solicitud.dt_fecmodifica}" style="font-weight:bold;" />
+        </h:panelGrid>
+      </p:panel>
+      <br />
+      <center >
+        <p:commandButton title="Cerrar Ventana" value="Cerrar" icon="close-windows" oncomplete="confirmCloseSolicitud.show()" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Imprimir Detalle" value="Imprimir" icon="icon-print" onclick="window.print();" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmCloseSolicitud" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseSolicitud" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseSolicitud" oncomplete="confirmCloseSolicitud.hide(),carDialogDetailSolicitud.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseSolicitud" oncomplete="confirmCloseSolicitud.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ui:composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" >
+  <h:form id="formDetailDetalleordencompra" >
+    <p:dialog id="carDialogDetailDetalleordencompra" header="Detalle Detalleordencompra" widgetVar="carDialogDetailDetalleordencompra" showEffect="fade" resizable="false" hideEffect="explode" modal="true" draggable="false" >
+      <h:panelGrid id="pgDetalleDetalleordencompra" cellpadding="0" cellspacing="2" width="100%" />
+      <p:panel header="Datos de Detalleordencompra" >
+        <h:panelGrid cellspacing="4" columns="2" >
+          <p:outputLabel value="Cantdetordcompra :" for="txtCantdetordcompra" />
+          <p:outputLabel id="txtCantdetordcompra" value="#{detalleordencompraBean.detalleordencompra.db_cantdetordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Idunidetordcompra :" for="txtIdunidetordcompra" />
+          <p:outputLabel id="txtIdunidetordcompra" value="#{detalleordencompraBean.detalleordencompra.id_idunidetordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Desunidetordcompra :" for="txtDesunidetordcompra" />
+          <p:outputLabel id="txtDesunidetordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desunidetordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Desdetordcompra :" for="txtDesdetordcompra" />
+          <p:outputLabel id="txtDesdetordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desdetordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Desprecuordcompra :" for="txtDesprecuordcompra" />
+          <p:outputLabel id="txtDesprecuordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_desprecuordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Destotalordcompra :" for="txtDestotalordcompra" />
+          <p:outputLabel id="txtDestotalordcompra" value="#{detalleordencompraBean.detalleordencompra.vc_destotalordcompra}" style="font-weight:bold;" />
+          <p:outputLabel value="Usuingresa :" for="txtUsuingresa" />
+          <p:outputLabel id="txtUsuingresa" value="#{detalleordencompraBean.detalleordencompra.vc_usuingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecingresa :" for="txtFecingresa" />
+          <p:outputLabel id="txtFecingresa" value="#{detalleordencompraBean.detalleordencompra.dt_fecingresa}" style="font-weight:bold;" />
+          <p:outputLabel value="Usumodifica :" for="txtUsumodifica" />
+          <p:outputLabel id="txtUsumodifica" value="#{detalleordencompraBean.detalleordencompra.vc_usumodifica}" style="font-weight:bold;" />
+          <p:outputLabel value="Fecmodifica :" for="txtFecmodifica" />
+          <p:outputLabel id="txtFecmodifica" value="#{detalleordencompraBean.detalleordencompra.dt_fecmodifica}" style="font-weight:bold;" />
+        </h:panelGrid>
+      </p:panel>
+      <br />
+      <center >
+        <p:commandButton title="Cerrar Ventana" value="Cerrar" icon="close-windows" oncomplete="confirmCloseDetalleordencompra.show()" />
+        <p:spacer width="10" height="10" />
+        <p:commandButton title="Imprimir Detalle" value="Imprimir" icon="icon-print" onclick="window.print();" />
+      </center>
+    </p:dialog>
+    <p:confirmDialog id="confirmCloseDetalleordencompra" global="true" showEffect="fade" hideEffect="explode" widgetVar="confirmCloseDetalleordencompra" header="Confirmaci&oacute;n" severity="alert" message="¿Está Seguro de Cerrar la ventana?" >
+      <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" process="@this" update="confirmCloseDetalleordencompra" oncomplete="confirmCloseDetalleordencompra.hide(),carDialogDetailDetalleordencompra.hide()" />
+      <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" process="@this" update="confirmCloseDetalleordencompra" oncomplete="confirmCloseDetalleordencompra.hide()" />
+    </p:confirmDialog>
+  </h:form>
+</ui:composition>
